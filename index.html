@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Portugal 2026">
+<meta name="theme-color" content="#0c4456">
+<title>Portugal & Madrid · Jun–Jul 2026</title>
+<style>
+  :root{
+    --ink:#1a262e;
+    --ink-soft:#46555e;
+    --mist:#eef1ef;
+    --card:#ffffff;
+    --line:#d8dfdc;
+    --ocean:#0c5a6e;
+    --ocean-soft:#e2eef0;
+    --hydrangea:#5f6fc4;
+    --hydrangea-soft:#e9ebf8;
+    --thermal:#c96a35;
+    --thermal-soft:#f7e9df;
+    --leaf:#3d7a52;
+    --leaf-soft:#e4efe7;
+    --gold:#b08a2e;
+    --danger:#b23b3b;
+    --mati:#0c5a6e;
+    --catita:#c25a8a;
+    --r:14px;
+    --display:"Fraunces","Iowan Old Style",Georgia,serif;
+    --body:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--body);background:var(--mist);color:var(--ink);line-height:1.5;padding-bottom:max(60px,calc(env(safe-area-inset-bottom,0px) + 24px))}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 16px}
+
+  header{background:linear-gradient(160deg,#0c4456 0%,var(--ocean) 55%,#127287 100%);color:#fff;padding:26px 0 0;position:relative;overflow:hidden}
+  header .wrap{position:relative;z-index:2}
+  .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;opacity:.75}
+  h1{font-family:var(--display);font-weight:600;font-size:clamp(24px,4.5vw,38px);margin:6px 0 4px;letter-spacing:-.01em}
+  .sub{font-size:14px;opacity:.85;margin-bottom:14px}
+  .hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .hstat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:10px;padding:8px 14px;font-size:13px}
+  .hstat b{display:block;font-size:17px;font-family:var(--display);font-weight:600}
+  .wave{display:block;width:100%;height:34px}
+
+  nav{position:sticky;top:0;z-index:50;background:var(--mist);border-bottom:1px solid var(--line);overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .tabs{display:flex;gap:4px;max-width:1060px;margin:0 auto;padding:8px 16px}
+  .tab{border:none;background:transparent;font-family:var(--body);font-size:14px;font-weight:600;color:var(--ink-soft);padding:9px 13px;border-radius:999px;cursor:pointer;white-space:nowrap}
+  .tab:hover{background:#e2e7e4}
+  .tab.active{background:var(--ink);color:#fff}
+  .tab:focus-visible{outline:2px solid var(--ocean);outline-offset:2px}
+
+  main{padding-top:22px}
+  section.view{display:none}
+  section.view.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  h2{font-family:var(--display);font-weight:600;font-size:23px;margin:26px 0 12px}
+  h2:first-child{margin-top:0}
+  h3{font-family:var(--display);font-weight:600;font-size:17px;margin-bottom:8px}
+  .muted{color:var(--ink-soft);font-size:13px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;margin-bottom:16px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}.grid4{grid-template-columns:1fr 1fr}}
+
+  /* HOY */
+  .today{background:linear-gradient(135deg,#10485a,#0c5a6e);color:#fff;border-radius:var(--r);padding:20px;margin-bottom:18px}
+  .today .tag{font-size:11px;letter-spacing:.15em;text-transform:uppercase;opacity:.75}
+  .today h3{color:#fff;font-size:20px;margin:4px 0 2px}
+  .today .row{border-color:rgba(255,255,255,.15)}
+  .today .row .t{color:#9fd4e0}
+  .today .row .nt{color:rgba(255,255,255,.65)}
+  .today a{color:#9fd4e0}
+
+  .legline{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:#fff}
+  .leg{flex:1 1 150px;padding:14px;border-right:1px solid var(--line);min-width:140px}
+  .leg:last-child{border-right:none}
+  .leg .dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px}
+  .leg b{font-family:var(--display);font-size:16px;display:block}
+  .leg span{font-size:12px;color:var(--ink-soft)}
+  .leg.now{background:var(--ocean-soft)}
+
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+  .kpi .lbl{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+  .kpi .val{font-family:var(--display);font-size:24px;font-weight:600;margin-top:2px}
+  .kpi .note{font-size:12px;color:var(--ink-soft)}
+
+  .todo{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#fff}
+  .todo.done{opacity:.55;text-decoration:line-through}
+  .todo input{margin-top:3px;width:16px;height:16px;accent-color:var(--ocean);cursor:pointer}
+  .todo .when{font-size:12px;color:var(--thermal);font-weight:600}
+  .pill{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px}
+  .pill.res{background:var(--thermal-soft);color:var(--thermal)}
+  .pill.ok{background:var(--leaf-soft);color:var(--leaf)}
+  .pill.opt{background:var(--hydrangea-soft);color:var(--hydrangea)}
+  .pill.warn{background:#fbecec;color:var(--danger)}
+  .pill.mati{background:var(--ocean-soft);color:var(--mati)}
+  .pill.catita{background:#f8e7ef;color:var(--catita)}
+  details.donebox{margin-top:10px}
+  details.donebox summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--ink-soft);padding:8px 4px;list-style:none}
+  details.donebox summary::-webkit-details-marker{display:none}
+  details.donebox summary::before{content:'▸ ';font-size:11px}
+  details.donebox[open] summary::before{content:'▾ '}
+  details.donebox .todo{opacity:.55}
+  details.donebox .todo .txt{text-decoration:line-through}
+
+  .daypick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  .daybtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:13px;font-weight:600;cursor:pointer;color:var(--ink-soft)}
+  .daybtn.active{background:var(--ocean);border-color:var(--ocean);color:#fff}
+  .ittitle{font-family:var(--display);font-size:19px;margin-bottom:2px}
+  .row{display:grid;grid-template-columns:54px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .row .t{font-weight:700;font-size:14px;color:var(--ocean);font-variant-numeric:tabular-nums}
+  .row .act{font-weight:600;font-size:14px}
+  .row .nt{font-size:12.5px;color:var(--ink-soft);margin-top:2px}
+  .maplink{font-size:12.5px;color:var(--ocean);text-decoration:none;font-weight:600}
+  .maplink:hover{text-decoration:underline}
+
+  .legendmap{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;margin:10px 0}
+  .legendmap span{display:flex;align-items:center;gap:6px}
+  .lc{width:14px;height:4px;border-radius:2px;display:inline-block}
+  svg text{font-family:var(--body)}
+
+  .restgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+  @media(max-width:760px){.restgrid{grid-template-columns:1fr}}
+  .restcard{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:0}
+  .restcard .rtop{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px}
+  .restcard h4{font-family:var(--display);font-size:16px;font-weight:600;line-height:1.25}
+  .restcard p{font-size:13px;color:var(--ink-soft);margin-bottom:6px}
+  .restcard p b{color:var(--ink)}
+  .restsub{font-size:13px;color:var(--ink-soft);margin:14px 0 10px}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff}
+  th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-soft);padding:8px 10px;border-bottom:2px solid var(--line)}
+  td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .totalrow td{font-weight:700;background:var(--ocean-soft)}
+  .bar{height:8px;border-radius:4px;background:#e6eae8;overflow:hidden;margin-top:6px}
+  .bar i{display:block;height:100%;border-radius:4px}
+
+  .form{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+  @media(max-width:820px){.form{grid-template-columns:1fr 1fr}}
+  .f label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:4px}
+  .f input,.f select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;font-family:var(--body);background:#fff;color:var(--ink)}
+  .f input:focus,.f select:focus{outline:2px solid var(--ocean);outline-offset:1px;border-color:var(--ocean)}
+  .who{display:flex;gap:6px}
+  .whobtn{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:8px;padding:8px 4px;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink-soft)}
+  .whobtn.mati.active{background:var(--ocean-soft);border-color:var(--mati);color:var(--mati)}
+  .whobtn.catita.active{background:#f8e7ef;border-color:var(--catita);color:var(--catita)}
+  .btn{background:var(--ocean);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:700;cursor:pointer}
+  .btn:hover{background:#0a4c5d}
+  .btn.ghost{background:transparent;color:var(--danger);border:none;font-size:13px;padding:4px 6px;cursor:pointer}
+  .catpill{font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;white-space:nowrap}
+  .saving{font-size:12px;color:var(--leaf);font-weight:600}
+  .empty{padding:26px;text-align:center;color:var(--ink-soft);font-size:14px;background:#fff;border:1px dashed var(--line);border-radius:var(--r)}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .filters select{padding:7px 10px;border:1px solid var(--line);border-radius:8px;font-size:13px;background:#fff;color:var(--ink)}
+
+  .balance{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .balance .side{flex:1;min-width:130px;text-align:center;padding:12px;border-radius:10px}
+  .balance .side b{font-family:var(--display);font-size:20px;display:block}
+  .daychart{display:flex;align-items:flex-end;gap:3px;height:110px;margin-top:8px}
+  .daychart .dc{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:3px;min-width:0}
+  .daychart .dc i{width:100%;border-radius:3px 3px 0 0;background:var(--ocean)}
+  .daychart .dc span{font-size:9px;color:var(--ink-soft);white-space:nowrap}
+
+  footer{margin-top:34px;text-align:center;font-size:12px;color:var(--ink-soft)}
+
+  /* ---- Mobile optimizations ---- */
+  @media(max-width:600px){
+    /* Prevent iOS auto-zoom on inputs (triggers when font-size < 16px) */
+    input,select,textarea{font-size:16px!important}
+    .f input,.f select{padding:12px 10px}
+    /* Single-column form on small phones */
+    .form{grid-template-columns:1fr}
+    /* Bigger touch targets */
+    .tab{padding:11px 12px;font-size:13px}
+    .daybtn{padding:10px 13px;min-height:44px}
+    .btn{padding:12px 18px}
+    /* Tabs scrollbar invisible on iOS */
+    nav::-webkit-scrollbar{display:none}
+    /* Header stats wrap nicer */
+    .hstat{flex:1 1 calc(50% - 5px)}
+    /* Itinerary time column slightly narrower */
+    .row{grid-template-columns:48px 1fr}
+    /* Balance stacks nicely */
+    .balance{flex-direction:column;align-items:stretch}
+    .balance .side{text-align:center}
+    /* Filters stack */
+    .filters{flex-direction:column}
+    .filters select{width:100%}
+  }
+  @media(max-width:480px){
+    .grid4{grid-template-columns:1fr 1fr}
+    h2{font-size:20px}
+    .kpi .val{font-size:21px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">19 jun – 5 jul 2026 · Mati & Catita</div>
+    <h1>Portugal &amp; Madrid</h1>
+    <div class="sub">Lisboa · São Miguel (Azores) · Algarve · Madrid</div>
+    <div class="hero-stats" id="heroStats"></div>
+  </div>
+  <svg class="wave" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,22 C150,42 300,2 450,18 C600,34 750,6 900,16 C1050,26 1150,12 1200,20 L1200,40 L0,40 Z" fill="#eef1ef"/>
+  </svg>
+</header>
+
+<nav><div class="tabs" role="tablist">
+  <button class="tab active" data-v="resumen">Resumen</button>
+  <button class="tab" data-v="gastos">Gastos</button>
+  <button class="tab" data-v="lisboa">Lisboa</button>
+  <button class="tab" data-v="azores">Azores</button>
+  <button class="tab" data-v="algarve">Algarve</button>
+  <button class="tab" data-v="madrid">Madrid</button>
+  <button class="tab" data-v="analisis">Análisis</button>
+</div></nav>
+
+<main class="wrap">
+
+<!-- ================= RESUMEN ================= -->
+<section class="view active" id="v-resumen">
+  <div id="todayCard"></div>
+
+  <h2>El recorrido</h2>
+  <div class="legline" id="legline"></div>
+
+  <h2>Pendientes y recordatorios</h2>
+  <div class="card" style="padding:12px;display:flex;gap:8px;align-items:center">
+    <input type="text" id="newTodo" placeholder="ej: llevar el canil del perro 🐶" style="flex:1;padding:9px 10px;border:1px solid var(--line);border-radius:8px;font-size:14px;font-family:var(--body)">
+    <button class="btn" id="addTodo">+ Agregar</button>
+  </div>
+  <div id="todos"></div>
+
+  <h2>Vuelos</h2>
+  <div class="card" style="padding:0;overflow-x:auto">
+    <table>
+      <thead><tr><th>Fecha</th><th>Tramo</th><th>Vuelo</th><th class="num">Sale</th><th class="num">Llega</th><th>Código</th><th class="num">CLP</th><th></th></tr></thead>
+      <tbody id="tblVuelos"></tbody>
+    </table>
+  </div>
+  <p class="muted" style="margin-top:6px">Horas locales de cada ciudad. "+1" = llega al día siguiente.</p>
+</section>
+
+<!-- ================= GASTOS ================= -->
+<section class="view" id="v-gastos">
+  <h2>Registrar gasto</h2>
+  <div class="card">
+    <div class="form">
+      <div class="f"><label>Fecha</label><input type="date" id="gFecha" min="2026-06-19" max="2026-07-06"></div>
+      <div class="f"><label>Categoría</label><select id="gCat"></select></div>
+      <div class="f"><label>¿Quién pagó?</label>
+        <div class="who">
+          <button class="whobtn mati active" data-who="mati">Mati</button>
+          <button class="whobtn catita" data-who="catita">Catita</button>
+        </div>
+      </div>
+      <div class="f"><label>Descripción</label><input type="text" id="gDesc" placeholder="ej: Cena lapas en PDL"></div>
+      <div class="f"><label>Monto CLP</label><input type="number" id="gEur" step="1" inputmode="numeric" placeholder="ej: 25000"></div>
+      <div class="f" style="display:flex;align-items:end;gap:6px">
+        <button class="btn" id="gAdd" style="width:100%">Agregar</button>
+        <button class="btn" id="gCancel" style="display:none;background:#7a8a92" title="Cancelar edición">✕</button>
+      </div>
+    </div>
+    <p class="muted" id="gPreview" style="margin-top:8px"></p>
+  </div>
+
+  <div class="grid3" id="gKpis"></div>
+
+  <h2>Movimientos</h2>
+  <div class="filters">
+    <select id="fDest"><option value="">Todos los destinos</option></select>
+    <select id="fCat"><option value="">Todas las categorías</option></select>
+    <select id="fWho"><option value="">Pagado por ambos</option><option value="mati">Pagó Mati</option><option value="catita">Pagó Catita</option></select>
+  </div>
+  <div id="gList"></div>
+</section>
+
+<!-- ================= DESTINOS ================= -->
+<section class="view" id="v-lisboa"><div id="c-lisboa"></div></section>
+<section class="view" id="v-azores"><div id="c-azores"></div></section>
+<section class="view" id="v-algarve"><div id="c-algarve"></div></section>
+<section class="view" id="v-madrid"><div id="c-madrid"></div></section>
+
+<!-- ================= ANÁLISIS ================= -->
+<section class="view" id="v-analisis">
+  <h2>¿Cómo vamos?</h2>
+  <div class="grid4" id="aKpis"></div>
+
+  <div class="card" style="margin-top:14px">
+    <h3>Cuentas Mati ↔ Catita</h3>
+    <p class="muted" style="margin-bottom:10px">Asumiendo que todo se divide 50/50.</p>
+    <div class="balance" id="aBalance"></div>
+  </div>
+
+  <div class="card">
+    <h3>Gasto por día</h3>
+    <div class="daychart" id="aDayChart"></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card" style="margin-bottom:0"><h3>Por categoría</h3><div id="aCatBars"></div></div>
+    <div class="card" style="margin-bottom:0"><h3>Por destino</h3><div id="aLegBars"></div></div>
+  </div>
+
+  <h2>Meta de gasto en terreno <span class="pill opt" style="vertical-align:middle">opcional</span></h2>
+  <div class="card">
+    <div style="display:flex;gap:14px;align-items:end;flex-wrap:wrap">
+      <div class="f" style="min-width:200px">
+        <label>Meta total en terreno (CLP)</label>
+        <input type="number" id="inBudgetVar" placeholder="ej: 1500000">
+      </div>
+      <span class="saving" id="saveHint"></span>
+    </div>
+    <div id="varVsReal" style="margin-top:16px"></div>
+  </div>
+
+  <h2>Costos fijos (ya pagados/reservados) · item por item</h2>
+  <p class="muted" style="margin-bottom:10px">Lo que ya está comprado antes de partir. No se mezcla con los gastos en terreno.</p>
+  <div class="card" style="padding:0;overflow-x:auto">
+    <table>
+      <thead><tr><th>Fecha</th><th>Item</th><th>Detalle / reserva</th><th class="num">CLP</th></tr></thead>
+      <tbody id="tblFixedItems"></tbody>
+    </table>
+  </div>
+</section>
+
+</main>
+<footer>Viaje Portugal &amp; Madrid 2026 · los datos se guardan automáticamente</footer>
+
+<script>
+/* ---- Bandera portuguesa como ícono (apple-touch-icon + favicon) ---- */
+(function(){
+  var c=document.createElement('canvas');c.width=c.height=180;
+  var ctx=c.getContext('2d');
+  /* Rojo */
+  ctx.fillStyle='#CF2B36';ctx.fillRect(0,0,180,180);
+  /* Verde (40% del ancho) */
+  ctx.fillStyle='#006A35';ctx.fillRect(0,0,72,180);
+  /* Anillo amarillo (armería) */
+  ctx.strokeStyle='#FEDF00';ctx.lineWidth=8;
+  ctx.beginPath();ctx.arc(72,90,34,0,Math.PI*2);ctx.stroke();
+  /* Escudo simplificado */
+  ctx.fillStyle='rgba(255,255,255,0.92)';
+  ctx.beginPath();ctx.ellipse(72,90,14,18,0,0,Math.PI*2);ctx.fill();
+  /* Quinas (5 puntos azules) */
+  ctx.fillStyle='#003399';
+  [[72,76],[60,85],[84,85],[64,97],[80,97]].forEach(function(p){
+    ctx.beginPath();ctx.arc(p[0],p[1],3.5,0,Math.PI*2);ctx.fill();
+  });
+  var url=c.toDataURL('image/png');
+  var l=document.createElement('link');l.rel='apple-touch-icon';l.sizes='180x180';l.href=url;
+  document.head.appendChild(l);
+  var f=document.createElement('link');f.rel='icon';f.type='image/png';f.href=url;
+  document.head.appendChild(f);
+})();
+
+/* ====================== DATOS ====================== */
+const fmtCLP = n => '$ ' + Math.round(n).toLocaleString('es-CL');
+const fmtEUR = n => '€ ' + (+n).toLocaleString('es-CL',{minimumFractionDigits:2,maximumFractionDigits:2});
+
+const LEGS = [
+  {id:'mad1', tab:'madrid', name:'Madrid (ida)', dates:'19–20 jun', from:'2026-06-19', to:'2026-06-20', color:'#b08a2e'},
+  {id:'lis',  tab:'lisboa', name:'Lisboa', dates:'20–24 jun', from:'2026-06-20', to:'2026-06-24', color:'#c96a35'},
+  {id:'azo',  tab:'azores', name:'Azores', dates:'24–29 jun', from:'2026-06-24', to:'2026-06-29', color:'#0c5a6e'},
+  {id:'alg',  tab:'algarve', name:'Algarve', dates:'29 jun–3 jul', from:'2026-06-29', to:'2026-07-03', color:'#5f6fc4'},
+  {id:'mad2', tab:'madrid', name:'Madrid (vuelta)', dates:'3–5 jul', from:'2026-07-03', to:'2026-07-06', color:'#b08a2e'},
+];
+
+/* [fecha, tramo, vuelo, sale, llega, código, clp, voucher] */
+const VUELOS = [
+  ['vie 19 jun','SCL → MAD','LATAM 708','16:00','10:55 +1','LA0453835EMYK',83232,'https://drive.google.com/file/d/1hKFJoBzIYpqCGWoeEbW5AzQ6LPjtepWL/view'],
+  ['sáb 20 jun','MAD → LIS','TAP 1013','13:40','14:05','C6EMJL',321630,'https://drive.google.com/file/d/1vKu1UJYyfOeUKMjmcUQ8cJYprdFCESG_/view'],
+  ['mié 24 jun','LIS → PDL','TAP 3926','15:15','16:40','Y9LU5C',473393,'https://drive.google.com/file/d/1CSTAWEBC8Gpm-VVrMl-hKc9u481xfoG2/view'],
+  ['lun 29 jun','PDL → LIS','TAP 1866','06:30','09:50','Y9LU5C',473393,'https://drive.google.com/file/d/1KBAzTj6Qe6tLiKqgloFh1xdX-pyiG0cX/view'],
+  ['vie 3 jul','LIS → MAD','TAP 1020','19:05','21:25','C6EMJL',321630,'https://drive.google.com/file/d/1vKu1UJYyfOeUKMjmcUQ8cJYprdFCESG_/view'],
+  ['dom 5 jul','MAD → SCL','LATAM 705','23:55','07:15 +1','LA0457190QHVR',82248,'https://drive.google.com/file/d/1usKJLTbz_QWGcWGokCQOdcUb34MRaugZ/view'],
+];
+
+const HOTELES = [
+  ['20–24 jun','Lisboa','Príncipe Real / Chiado / Alfama',426466,'18 jun'],
+  ['24–29 jun','Azores','São Miguel · 🎁 regalo de cumple',0,'—'],
+  ['29 jun–3 jul','Algarve','Lagos o Carvoeiro',509602,'24 may ✓ pasado'],
+  ['3–5 jul','Madrid','Malasaña / La Latina',443315,'1 jul'],
+];
+
+const FIXED = [
+  ['✈️ Pasajes','6 tramos · ida y vuelta + internos',1755526],
+  ['🏨 Alojamientos','4 reservas (Azores es regalo 🎁)',1379383],
+  ['🚗 Arriendo auto','Azores (5d) + Lisboa/Algarve (4d)',221278],
+];
+const TOTAL_FIJO = 3356187;
+
+/* Items fijos detallados: [grupo, fecha(s), detalle, CLP, nota, link] */
+const FIXED_ITEMS = [
+  ['✈️ Pasajes','19 jun','SCL → MAD · LATAM 708 · 16:00 → 10:55 +1',83232,'LA0453835EMYK · Falabella - Mati','https://drive.google.com/file/d/1hKFJoBzIYpqCGWoeEbW5AzQ6LPjtepWL/view'],
+  ['✈️ Pasajes','20 jun','MAD → LIS · TAP 1013 · 13:40 → 14:05',321630,'C6EMJL · Falabella','https://drive.google.com/file/d/1vKu1UJYyfOeUKMjmcUQ8cJYprdFCESG_/view'],
+  ['✈️ Pasajes','24 jun','LIS → PDL · TAP 3926 · 15:15 → 16:40',473393,'Y9LU5C · Air Portugal','https://drive.google.com/file/d/1CSTAWEBC8Gpm-VVrMl-hKc9u481xfoG2/view'],
+  ['✈️ Pasajes','29 jun','PDL → LIS · TAP 1866 · 06:30 → 09:50',473393,'Y9LU5C · Air Portugal','https://drive.google.com/file/d/1KBAzTj6Qe6tLiKqgloFh1xdX-pyiG0cX/view'],
+  ['✈️ Pasajes','3 jul','LIS → MAD · TAP 1020 · 19:05 → 21:25',321630,'C6EMJL · Falabella','https://drive.google.com/file/d/1vKu1UJYyfOeUKMjmcUQ8cJYprdFCESG_/view'],
+  ['✈️ Pasajes','5 jul','MAD → SCL · LATAM 705 · 23:55 → 07:15 +1',82248,'LA0457190QHVR · LATAM - Catita','https://drive.google.com/file/d/1usKJLTbz_QWGcWGokCQOdcUb34MRaugZ/view'],
+  ['🏨 Alojamientos','20–24 jun','Lisboa · Travessa das Inglesinhas 14',426466,'Airbnb · cancelar antes del 18 jun','https://www.airbnb.cl/trips/v1/reservation-details/ro/RESERVATION2_CHECKIN/HMYSAD2ZYF'],
+  ['🏨 Alojamientos','24–29 jun','Azores · R. Machado dos Santos 82, Ponta Delgada',0,'🎁 Regalo de cumple','https://all.accor.com/hotel/B366/index.es.shtml'],
+  ['🏨 Alojamientos','29 jun–3 jul','Algarve · Rua Francisco Moreira Pacheco, Lagos',509602,'Booking · reservado ✅','https://drive.google.com/file/d/1PFdx3lvvC5d7MNnPM_1BAHT6S9w2K1tP/view'],
+  ['🏨 Alojamientos','3–5 jul','Madrid · Calle Montera 22, Centro',443315,'Booking · cancelar antes del 1 jul','https://drive.google.com/file/d/1mjTunOEZPUgHjsx7ko2XZwgbXZmc6Hma/view'],
+  ['🚗 Arriendo auto','24–29 jun','Auto Azores (São Miguel)',138410,'Rentcars #150361','https://drive.google.com/file/d/16SAQpO2wIxOj93qd-_1gglFsCpt9caQq/view'],
+  ['🚗 Arriendo auto','29 jun–3 jul','Auto Lisboa / Algarve',82868,'Rentcars L58402947D5','https://drive.google.com/file/d/11Ue5NzyV5E4HS3xmD_GL0RH5OgqGhhJY/view'],
+];
+
+const TODOS = [
+  {id:'whale', txt:'🐋 Reservar Whale Watching — Futurismo Azores (día 5, 28 jun)', when:'Reservar ya · junio es temporada alta'},
+  {id:'ilheu', txt:'🏊 Reservar ferry Ilhéu de Vila Franca (día 5) — límite 400 pers/día', when:'Reservar online ~10 días antes → alrededor del 18 jun'},
+  {id:'beija', txt:'♨️ Reservar Poça da Dona Beija (día 3, 26 jun) — pocadonabeija.com', when:'Reservar 1–2 semanas antes'},
+  {id:'tonys', txt:'🍲 Reservar almuerzo Cozido en Tony\'s, Furnas (día 3)', when:'Reservar 2–3 días antes'},
+  {id:'marea', txt:'🌊 Verificar marea baja para Ponta da Ferraria (día 2, 25 jun)', when:'Revisar la semana del viaje'},
+  {id:'lisb',  txt:'🏨 Decisión Airbnb Lisboa — cancelación gratis hasta el 18 jun', when:'Antes del 18 jun'},
+  {id:'madh',  txt:'🏨 Decisión hotel Madrid — cancelación gratis hasta el 1 jul', when:'Antes del 1 jul'},
+  {id:'traje', txt:'🩳 Empacar traje de baño OSCURO/VIEJO (aguas ferruginosas tiñen) + zapatillas de agua', when:'Antes de partir'},
+];
+
+const IT_AZORES = [
+ {d:1, date:'2026-06-24', dlabel:'mié 24 jun', title:'Llegada · Ponta Delgada', rows:[
+   ['16:40','✈️ Aterrizaje aeropuerto PDL','~10 min al centro en taxi (~€10)','fijo'],
+   ['17:15','🏨 Check-in hotel + dejar maletas','','fijo'],
+   ['17:30','🍍 Plantación Ananases A. Arruda','Gratis, 30 min, a 5 min del centro. Jugo y licor de piña','opc'],
+   ['18:00','🏛️ Centro histórico — Portas da Cidade, marina','A pie, ambiente tranquilo','fijo'],
+   ['19:30','☕ Café / aperitivo','','fijo'],
+   ['20:30','🍽️ Cena — lapas grelhadas + alcatra','Platos típicos azoreanos, cualquier restaurante del centro','fijo'],
+ ]},
+ {d:2, date:'2026-06-25', dlabel:'jue 25 jun', title:'Sete Cidades + Costa Oeste', maps:'https://www.google.com/maps/dir/Ponta+Delgada/Miradouro+da+Vista+do+Rei/Miradouro+da+Boca+do+Inferno/Sete+Cidades/Mosteiros/Ponta+da+Ferraria/Ponta+Delgada', rows:[
+   ['8:00','🚗 Salida desde Ponta Delgada','~40 min hasta Sete Cidades','fijo'],
+   ['8:45','⭐ Miradouro da Vista do Rei','Parada breve 15–20 min. Vista panorámica clásica del lago','fijo'],
+   ['9:15','⭐ Miradouro da Grota/Boca do Inferno','El mejor mirador de la isla. 20 min caminando. LLEGAR TEMPRANO','fijo'],
+   ['11:00','🌊 Pueblo de Sete Cidades — lago, iglesia','Posible kayak o bici','fijo'],
+   ['13:00','🍽️ Almuerzo en Sete Cidades o Mosteiros','','fijo'],
+   ['14:30','🏖️ Praia dos Mosteiros','Única playa arenosa del oeste, rocas volcánicas negras','fijo'],
+   ['15:30','🏊 Piscinas Naturais Caneiros','Piscinas de roca volcánica, agua cristalina','fijo'],
+   ['17:00','♨️ Ponta da Ferraria — termas en el océano','Traje OSCURO + zapatillas de agua. Ir con MAREA BAJA','warn'],
+   ['19:30','🚗 Regreso a PDL + cena','~45 min','fijo'],
+ ]},
+ {d:3, date:'2026-06-26', dlabel:'vie 26 jun', title:'Furnas — termas, geología y parques', maps:'https://www.google.com/maps/dir/Ponta+Delgada/Parque+Terra+Nostra/Caldeiras+das+Furnas/Mata+Jardim+Jose+do+Canto/Miradouro+da+Lagoa+das+Furnas/Poca+da+Dona+Beija/Ponta+Delgada', rows:[
+   ['9:00','🚗 Salida hacia Furnas','~45 min','fijo'],
+   ['10:30','⭐ Parque Terra Nostra — jardín + piscina termal','Abre 10:30. Traje de baño VIEJO (tiñe marrón)','fijo'],
+   ['12:30','🍲 Cozido das Furnas en Tony\'s','Cocido enterrado con calor geotérmico. RESERVAR','res'],
+   ['14:30','🌋 Caldeiras das Furnas — géiseres','Gratis. Probar el agua mineral. Centro del pueblo','fijo'],
+   ['15:15','🌿 Mata Jardim José do Canto','€5. Secuoyas y cascada. Viernes abierto ✅','fijo'],
+   ['16:30','👁️ Miradouro da Lagoa das Furnas','Vista sobre la laguna volcánica','fijo'],
+   ['18:00','⭐ Poça da Dona Beija — termas al atardecer','Hasta 23:00, iluminación nocturna. RESERVAR online','res'],
+   ['20:00','🚗 Regreso a Ponta Delgada','','fijo'],
+ ]},
+ {d:4, date:'2026-06-27', dlabel:'sáb 27 jun', title:'Lagoa do Fogo → Costa Norte', maps:'https://www.google.com/maps/dir/Ponta+Delgada/Miradouro+da+Lagoa+do+Fogo/Caldeira+Velha/Miradouro+de+Santa+Iria/Gorreana+Tea+Factory/Parque+Natural+Ribeira+dos+Caldeiroes/Praia+do+Areal+de+Santa+Barbara/Ponta+Delgada', rows:[
+   ['8:30','🚗 Salida hacia Lagoa do Fogo','Llegar antes de las 9 — la carretera se cierra a privados en verano','warn'],
+   ['8:45','⭐ Miradouro Lagoa do Fogo + Trek PRC37','Trek ~2–3 h. Si llegan tarde: bus lanzadera €5','fijo'],
+   ['12:30','♨️ Caldeira Velha — termas con cascada','37–38°C. ~€10. Llevar ropa de baño','fijo'],
+   ['14:15','⭐ Miradouro de Santa Iria','10 min, al lado de la carretera. La mejor vista de la costa norte','fijo'],
+   ['14:45','🍃 Gorreana Tea Factory','Única plantación de té de Europa. Gratis. Probar té de piña','fijo'],
+   ['16:00','🌊 Parque Natural Ribeira dos Caldeirões','Cascada, molinos antiguos, hortensias. Gratis','fijo'],
+   ['19:00','🏖️ Praia do Areal de Santa Bárbara — atardecer','Arena negra. Estacionamiento gratis','fijo'],
+   ['20:30','🍽️ Cena en Ribeira Grande o regreso a PDL','','fijo'],
+ ]},
+ {d:5, date:'2026-06-28', dlabel:'dom 28 jun', title:'Whale watching + Ilhéu Vila Franca', maps:'https://www.google.com/maps/dir/Ponta+Delgada/Vila+Franca+do+Campo/Ilheu+de+Vila+Franca+do+Campo/Jardim+Botanico+Jose+do+Canto+Ponta+Delgada', rows:[
+   ['8:00','⭐ 🐋 Whale Watching — Futurismo Azores','Salida desde PDL, ~3 h. Junio = temporada alta de ballenas azules. RESERVAR','res'],
+   ['11:30','🍽️ Regreso + ducha + almuerzo','Almorzar en Vila Franca do Campo de camino al Ilhéu','fijo'],
+   ['13:30','⭐ 🏊 Ilhéu de Vila Franca do Campo','Ferry desde la marina. Límite 400/día. RESERVAR ~10 días antes. Últimos botes ~17:30','res'],
+   ['16:30','🌿 Jardim Botânico José do Canto','Árboles exóticos y café. Hasta 19:00','opc'],
+   ['20:00','🍽️ Cena de cierre en Ponta Delgada','Última noche — elegir restaurante con anticipación','fijo'],
+ ]},
+ {d:6, date:'2026-06-29', dlabel:'lun 29 jun', title:'Salida — vuelo 06:30 (madrugón ⏰)', rows:[
+   ['4:15','✈️ Salida del hotel hacia aeropuerto','Aeropuerto a ~10 min del centro. Estar ahí 04:30. Devolver el auto antes','warn'],
+   ['6:30','✈️ Vuelo TAP 1866 PDL → LIS','Llega a Lisboa 09:50 — retiran el auto y rumbo al Algarve 🌊','fijo'],
+ ]},
+];
+
+const PTS = [
+  [330,262,'Ponta Delgada','#1a262e','Ponta+Delgada'],
+  [122,178,'Vista do Rei','#3d7a52','Miradouro+da+Vista+do+Rei'],
+  [88,175,'Ferraria','#3d7a52','Ponta+da+Ferraria'],
+  [120,150,'Mosteiros','#3d7a52','Mosteiros+Sao+Miguel'],
+  [632,212,'Furnas · Terra Nostra','#c96a35','Parque+Terra+Nostra'],
+  [600,235,'Dona Beija','#c96a35','Poca+da+Dona+Beija'],
+  [392,193,'Lagoa do Fogo','#0c5a6e','Miradouro+da+Lagoa+do+Fogo'],
+  [420,148,'Caldeira Velha','#0c5a6e','Caldeira+Velha'],
+  [500,132,'Sta. Iria · Gorreana','#0c5a6e','Gorreana+Tea+Factory'],
+  [600,130,'R. dos Caldeirões','#0c5a6e','Parque+Natural+Ribeira+dos+Caldeiroes'],
+  [350,140,'Pr. Sta. Bárbara','#0c5a6e','Praia+do+Areal+de+Santa+Barbara'],
+  [520,285,'Vila Franca + Ilhéu','#5f6fc4','Ilheu+de+Vila+Franca+do+Campo'],
+];
+
+const IT_LISBOA = [
+  {d:1, date:'2026-06-20', dlabel:'sáb 20 jun', title:'Llegada · Centro Histórico', rows:[
+    ['14:00','✈️ Aterrizaje en Lisboa + traslado','Trámites y traslado a la ciudad (~20–40 min)','fijo'],
+    ['16:00','🏛️ Barrio da Baixa + Elevador de Santa Justa','Ver la estructura del elevador de hierro gótico','fijo'],
+    ['16:45','⛪ Convento do Carmo (iglesia gótica sin techo)','Entrada ~€7. Ruinas al aire libre','res'],
+    ['17:45','📚 Barrio do Chiado + Livraria Bertrand','La librería más antigua del mundo (1732)','fijo'],
+    ['18:30','⭐ Arco da Rua Augusta → Praça do Comércio','Atardecer sobre el río Tajo','fijo'],
+    ['19:30','🍽️ Cena de bienvenida en Time Out Market','Mercado da Ribeira. Llegar temprano, se llena','fijo'],
+    ['21:30','🍸 Tragos en Pink Street (Rua Nova do Carvalho)','Calle rosa con bares y ambiente animado','opc'],
+  ]},
+  {d:2, date:'2026-06-21', dlabel:'dom 21 jun', title:'Belém y LX Factory', rows:[
+    ['10:00','🚊 Tranvía 15E o Uber hacia Belém','~20–30 min desde el centro','fijo'],
+    ['10:00','⭐ Mosteiro dos Jerónimos','Entrada online comprada. Joya manuelina (UNESCO)','res'],
+    ['11:30','🍮 Pastéis de Belém (fábrica original)','Los originales desde 1837. Suele haber fila','fijo'],
+    ['12:15','🗼 Padrão dos Descobrimentos + Torre de Belém','Paseo por la costanera del Tajo','fijo'],
+    ['14:00','🍽️ Almuerzo en la zona de Belém','Restaurantes junto al río','fijo'],
+    ['16:00','🎨 LX Factory + Librería Ler Devagar','Complejo industrial: arte urbano, tiendas','opc'],
+  ]},
+  {d:3, date:'2026-06-22', dlabel:'lun 22 jun', title:'Alfama y miradores', rows:[
+    ['10:00','⭐ Castelo de São Jorge','Entrada online comprada. Vistas panorámicas','res'],
+    ['11:30','👁️ Bajada por Alfama — miradores','Paradas foto: Santa Luzia y Portas do Sol','fijo'],
+    ['13:30','🍽️ Almuerzo tradicional en tasca de Alfama','Cocina portuguesa típica','fijo'],
+    ['15:30','☕ Miradouro da Graça — café o cerveza','Vista panorámica de la ciudad','fijo'],
+    ['18:00','🍷 Cena por Príncipe Real o Bairro Alto','Barrios bohemios, ambiente nocturno','fijo'],
+  ]},
+  {d:4, date:'2026-06-23', dlabel:'mar 23 jun', title:'Sintra — grandes éxitos', rows:[
+    ['08:30','🚆 Tren desde estación Rossio hacia Sintra','~40 min. Comprar billete ida y vuelta','fijo'],
+    ['09:30','⭐ Palácio Nacional da Pena','Entrada online primer turno OBLIGATORIA','res'],
+    ['12:00','🏰 Castelo dos Mouros','Caminata 15 min desde Pena. Murallas','fijo'],
+    ['14:00','🍽️ Almuerzo en el centro histórico de Sintra','Probar los travesseiros de Sintra','fijo'],
+    ['15:30','⭐ Quinta da Regaleira (Pozo Iniciático)','Entrada online. Jardines místicos','res'],
+    ['18:00','🚆 Tren de regreso + última cena en Lisboa','Última noche en la capital','fijo'],
+  ]},
+  {d:5, date:'2026-06-24', dlabel:'mié 24 jun', title:'Despedida · Vuelo a Azores', rows:[
+    ['09:30','🌳 Desayuno + Parque Eduardo VII','Caminata relajada, vistas a la ciudad','fijo'],
+    ['11:30','🏨 Check-out del hotel','Dejar maletas si hay tiempo','fijo'],
+    ['12:30','✈️ Salida hacia Aeropuerto Humberto Delgado','~20 min del centro','fijo'],
+    ['15:15','✈️ Vuelo TAP 3926 LIS → PDL','¡Rumbo a las Azores! 🌋','fijo'],
+  ]},
+];
+
+const IT_ALGARVE = [
+  {d:1, date:'2026-06-29', dlabel:'lun 29 jun', title:'La bajada al sur · Base en Lagos',
+   maps:'https://www.google.com/maps/dir/Aeropuerto+Lisboa/Lagos+Algarve',
+   rows:[
+    ['10:00','✈️ Aterrizaje en Lisboa + auto de alquiler','Retiro de equipaje y recogida del coche arrendado','res'],
+    ['11:30','🚗 Conducción a Lagos por la autopista A2','~3 h directo hasta Lagos','fijo'],
+    ['15:00','🏨 Llegada a Lagos + check-in','Soltar maletas y ponerse traje de baño','fijo'],
+    ['16:00','🏖️ Praia da Batata o Meia Praia','Primer chapuzón de relajo, en el mismo pueblo','fijo'],
+    ['18:30','🏛️ Centro histórico de Lagos + marina','Caminata relajada al atardecer','fijo'],
+    ['20:00','🍽️ Cena tranquila en Lagos','Restaurantes del centro','fijo'],
+  ]},
+  {d:2, date:'2026-06-30', dlabel:'mar 30 jun', title:'Las calas de postal · Lagos',
+   maps:'https://www.google.com/maps/dir/Lagos/Ponta+da+Piedade/Praia+do+Camilo/Praia+de+Dona+Ana/Lagos',
+   rows:[
+    ['10:30','⭐ Ponta da Piedade — farallones','Acantilados icónicos. El auto casi ni se mueve hoy','fijo'],
+    ['12:00','🏖️ Praia do Camilo','Cala preciosa entre rocas. Tómense su tiempo','fijo'],
+    ['14:30','🍽️ Almuerzo en O Camilo o el centro','Restaurante arriba de la playa','fijo'],
+    ['16:00','🏖️ Praia de Dona Ana','Más grande, perfecta para el atardecer','opc'],
+    ['20:00','🍷 Noche libre en Lagos','Cena a elección por el centro','fijo'],
+  ]},
+  {d:3, date:'2026-07-01', dlabel:'mié 1 jul', title:'Cuevas y Carvoeiro · Rumbo al este',
+   maps:'https://www.google.com/maps/dir/Lagos/Praia+da+Marinha/Cueva+de+Benagil/Carvoeiro/Algar+Seco/Lagos',
+   rows:[
+    ['10:00','⭐ Praia da Marinha','De las mejores de Europa. Manejo 35 min. Arcos de roca','fijo'],
+    ['13:00','🛶 Cueva de Benagil en bote o kayak','Se toma en las playas cercanas','res'],
+    ['14:30','🍽️ Carvoeiro — almuerzo','Pueblo blanco a 15 min. Vista a la playa','fijo'],
+    ['16:30','🥾 Pasarelas de Algar Seco','O un último baño en Praia de Carvoeiro','fijo'],
+    ['18:30','🚗 Retorno a Lagos','Fin del día por la costa','fijo'],
+  ]},
+  {d:4, date:'2026-07-02', dlabel:'jue 2 jul', title:'Beach-hopping por Albufeira',
+   maps:'https://www.google.com/maps/dir/Lagos/Praia+de+Sao+Rafael/Praia+da+Falesia+Albufeira/Albufeira+Old+Town/Lagos',
+   rows:[
+    ['10:30','🚗 Manejo directo a la costa de Albufeira','Salida desde Lagos','fijo'],
+    ['11:15','🏖️ Praia de São Rafael o Praia da Coelha','Arena dorada y rocas gigantes. Ideal para nadar','fijo'],
+    ['14:00','🍽️ Almuerzo en chiringuito frente al mar','Junto a la playa','fijo'],
+    ['15:30','⭐ Praia da Falésia','Km de arena y acantilados rojos. Caminar por la orilla','fijo'],
+    ['18:30','🏛️ Centro Histórico (Old Town) de Albufeira','Calles blancas y vibra festiva','fijo'],
+    ['20:30','🍽️ Cena en las terrazas de Albufeira','Ambiente animado','fijo'],
+    ['22:30','🚗 Retorno a Lagos por la autopista A22','~35–40 min','fijo'],
+  ]},
+  {d:5, date:'2026-07-03', dlabel:'vie 3 jul', title:'Retorno a Lisboa · Vuelo a Madrid',
+   maps:'https://www.google.com/maps/dir/Lagos/Aeropuerto+Lisboa',
+   rows:[
+    ['09:30','☕ Desayuno + compras de recuerdos en Lagos','Última caminata con calma','fijo'],
+    ['11:00','🚗 Check-out + regreso por la autopista A2','~3 h rumbo a Lisboa','fijo'],
+    ['14:00','🍽️ Parada para almorzar en ruta','A mitad de camino','fijo'],
+    ['15:30','✈️ Aeropuerto de Lisboa + entrega del auto','Devolución del coche de alquiler','res'],
+    ['16:30','🛂 Ingreso al aeropuerto + seguridad','Con calma, sin apuros','fijo'],
+    ['19:05','✈️ Vuelo TAP 1020 LIS → MAD','¡Rumbo a Madrid! 🇪🇸','fijo'],
+  ]},
+];
+
+/* Puntos del mapa de Algarve: [x, y, label, color, query] */
+const PTS_ALG = [
+  [152, 114, 'Lagos', '#1a262e', 'Lagos+Algarve'],
+  [115, 136, 'Ponta da Piedade', '#3d7a52', 'Ponta+da+Piedade+Lagos'],
+  [132, 128, 'Pr. Camilo', '#3d7a52', 'Praia+do+Camilo+Lagos'],
+  [162, 125, 'Pr. Dona Ana', '#3d7a52', 'Praia+de+Dona+Ana+Lagos'],
+  [342, 103, 'Pr. Marinha', '#c96a35', 'Praia+da+Marinha+Lagoa'],
+  [398, 100, 'Benagil', '#c96a35', 'Cueva+de+Benagil'],
+  [360, 110, 'Carvoeiro', '#c96a35', 'Carvoeiro+Lagoa'],
+  [382, 116, 'Algar Seco', '#c96a35', 'Algar+Seco+Carvoeiro'],
+  [572, 104, 'Pr. S. Rafael', '#0c5a6e', 'Praia+de+Sao+Rafael+Albufeira'],
+  [606, 108, 'Albufeira', '#0c5a6e', 'Albufeira+Old+Town'],
+  [648, 98, 'Pr. Falésia', '#0c5a6e', 'Praia+da+Falesia+Albufeira'],
+];
+
+const CATS = [
+  ['comida','🍽️ Comida','#c96a35'],
+  ['actividades','♨️ Termas & actividades','#0c5a6e'],
+  ['museos','🏛️ Museos & entradas','#5f6fc4'],
+  ['transporte','⛽ Bencina & transporte','#3d7a52'],
+  ['compras','🛍️ Compras','#b08a2e'],
+  ['otros','📦 Otros','#46555e'],
+];
+
+const DESTINFO = {
+  lisboa:{name:'Lisboa', emoji:'🚋', dates:'20 – 24 de junio',
+    flights:'Llegada: TAP 1013 MAD→LIS sáb 20 jun 13:40 → 14:05 · Salida: TAP 3926 LIS→PDL mié 24 jun 15:15',
+    hotel:'Airbnb · Travessa das Inglesinhas 14, Lisboa (Príncipe Real) · $426.466 · cancelación gratis hasta el 18 jun',
+    gmaps:'https://www.google.com/maps/search/?api=1&query=Travessa+das+Inglesinhas+14+Lisboa',
+    blink:'https://www.airbnb.cl/trips/v1/reservation-details/ro/RESERVATION2_CHECKIN/HMYSAD2ZYF', blbl:'Reserva Airbnb',
+    extra:'Sin auto — todo a pie, tranvía 28 y tuk-tuks.'},
+  azores:{name:'São Miguel, Azores', emoji:'🌋', dates:'24 – 29 de junio',
+    flights:'Llegada: TAP 3926 24 jun 15:15 → 16:40 · Salida: TAP 1866 29 jun 06:30 → 09:50 LIS (¡madrugón! salir del hotel 4:15)',
+    hotel:'R. Machado dos Santos 82, Ponta Delgada · 🎁 regalo de cumple',
+    gmaps:'https://www.google.com/maps/search/?api=1&query=R.+Machado+dos+Santos+82+Ponta+Delgada',
+    blink:'https://all.accor.com/hotel/B366/index.es.shtml', blbl:'Ver hotel',
+    extra:'Auto arrendado (Rentcars #150361, $138.410). Base en Ponta Delgada.'},
+  algarve:{name:'Algarve', emoji:'🏖️', dates:'29 de junio – 3 de julio',
+    flights:'Llegada: aterrizan en LIS 29 jun 09:50, retiran auto y ~3 h de carretera al sur · Salida: TAP 1020 LIS→MAD 3 jul 19:05 → 21:25',
+    hotel:'Rua Francisco Moreira Pacheco Lote 1 1C, Lagos · $509.602 · reservado ✅',
+    gmaps:'https://www.google.com/maps/search/?api=1&query=Rua+Francisco+Moreira+Pacheco+Lote+1+Lagos',
+    blink:'https://drive.google.com/file/d/1PFdx3lvvC5d7MNnPM_1BAHT6S9w2K1tP/view', blbl:'Voucher Booking',
+    extra:'Auto arrendado en Lisboa (Rentcars L58402947D5, $82.868). Devolverlo antes del vuelo del 3 jul.'},
+  madrid:{name:'Madrid', emoji:'🥘', dates:'20 jun (escala) y 3 – 5 de julio',
+    flights:'Ida: LATAM 708 sale SCL 19 jun 16:00 → llega MAD 20 jun 10:55, conexión a Lisboa el mismo día · Vuelta: LATAM 705 dom 5 jul 23:55 → SCL lun 6 jul 07:15',
+    hotel:'Calle Montera 22, Centro (a pasos de Sol y Gran Vía) · $443.315 · cancelación gratis hasta el 1 jul',
+    gmaps:'https://www.google.com/maps/search/?api=1&query=Calle+Montera+22+Madrid',
+    blink:'https://drive.google.com/file/d/1mjTunOEZPUgHjsx7ko2XZwgbXZmc6Hma/view', blbl:'Voucher Booking',
+    extra:'Última parada antes de volver a Chile. El domingo 5 tienen el día completo: el vuelo sale 23:55.'},
+};
+
+const RESTAURANTS = {
+  lisboa: [
+    {name:'Rocco', food:'Italiana y mediterránea sofisticada — pastas trufadas, carnes y barra de mariscos.', vibe:'El lugar del momento. Maximalismo de los años 60 lujoso, barra central estallada de gente guapa y música.', addr:'R. Ivens 14, 1200-227 Lisboa', link:'https://www.google.com/maps?q=Rocco+Rua+Ivens+14+1200-227+Lisboa'},
+    {name:'SEEN Lisboa', food:'Fusión japonesa-brasileña premium — sushi de autor y alta coctelería.', vibe:'Rooftop glamoroso y nocturno en el Hotel Tivoli. DJs en vivo, barra circular y vistas brutales de noche.', addr:'Av. da Liberdade 185, 1269-050 Lisboa', link:'https://www.google.com/maps?q=SEEN+Lisboa+Avenida+da+Liberdade+185+1269-050+Lisboa'},
+    {name:'Javá Rooftop', food:'Mediterránea e internacional a la brasa con toques de Medio Oriente, para compartir.', vibe:'Azotea ultra joven y de moda con plantas, sofás de terciopelo y vistas al río Tajo. Se enciende de noche.', addr:'Praça Dom Luís I 30, 1200-275 Lisboa', link:'https://www.google.com/maps?q=Java+Rooftop+Praca+Dom+Luis+I+30+1200-275+Lisboa'},
+    {name:'Palácio Chiado', food:'Alta cocina internacional, carnes maduradas y barras de sushi premium.', vibe:'Cenar dentro de un palacio del s. XVIII con frescos en el techo, pero con vibra moderna, DJs y barras de tragos.', addr:'R. do Alecrim 70, 1200-018 Lisboa', link:'https://www.google.com/maps?q=Palacio+Chiado+Rua+do+Alecrim+70+1200-018+Lisboa'},
+    {name:'Mini Bar (José Avillez)', food:'Cocina de vanguardia en formato de pequeños "bocados sorpresa" (como aceitunas que explotan).', vibe:'Un "teatro gastronómico" oculto, luces bajas, ambiente íntimo, misterioso y divertido para ir en pareja.', addr:'R. Nova da Trindade 18, 1200-303 Lisboa', link:'https://www.google.com/maps?q=Mini+Bar+Jose+Avillez+Rua+Nova+da+Trindade+18+1200-303+Lisboa'},
+    {name:'JNcQUOI Avenida', food:'Alta cocina portuguesa e internacional — arroz de pato premium y excelentes cortes de carne.', vibe:'Ícono de la ciudad: esqueleto de dinosaurio gigante flotando, música de DJ y público elegante y producido.', addr:'Av. da Liberdade 182, 1250-146 Lisboa', link:'https://www.google.com/maps?q=JNcQUOI+Avenida+da+Liberdade+182+1250-146+Lisboa'},
+    {name:'Tasca Baldracca', food:'Tabernera tradicional llevada al extremo con giros modernos — tapas con mucha personalidad.', vibe:'El lado opuesto al lujo: tasca canalla, ruidosa, joven, ultra de moda, energía de fiesta total.', addr:'R. das Olarias 57, 1100-379 Lisboa', link:'https://www.google.com/maps?q=Tasca+Baldracca+Rua+das+Olarias+57+1100-379+Lisboa'},
+    {name:'Bar Alimentar', food:'Fusión italo-portuguesa con ingredientes locales de temporada y carta de vinos naturales.', vibe:'Bistró de barrio súper moderno. Velas, azulejos, diseño estético, público joven y melómano.', addr:'R. de São Bento 326, 1200-821 Lisboa', link:'https://www.google.com/maps?q=Bar+Alimentar+Rua+de+Sao+Bento+326+1200-821+Lisboa'},
+    {name:"Boubou's", food:'Alta cocina internacional creativa de la chef Louise Bourrat — menús degustación explosivos.', vibe:'Oasis urbano en Príncipe Real: patio con plantas tropicales, ambiente joven, íntimo y cotizado.', addr:'R. do Monte Olivete 32A, 1200-280 Lisboa', link:'https://www.google.com/maps?q=Boubous+Rua+do+Monte+Olivete+32A+1200-280+Lisboa'},
+    {name:'Rosamar', food:'Mariscos premium, ostras, ceviches y pescados sustentables a la brasa.', vibe:'Estilo marinero-chic. Locales jóvenes comiendo marisco fresco con vino blanco antes de salir de fiesta.', addr:'R. da Rosa 317, 1250-092 Lisboa', link:'https://www.google.com/maps?q=Rosamar+Rua+da+Rosa+317+1250-092+Lisboa'},
+  ],
+  azores: [
+    {name:'Associação Agrícola de São Miguel', food:'El templo de la carne de la isla: Bife à Associação, filete de ternera azoriana con salsa de ajo, vino blanco, huevo frito y pimenta da terra.', vibe:'Enorme, rústico pero moderno, ultra popular entre locales y turistas, ambiente vibrante.', addr:'Recinto de Feiras, Campo de Santana, 9600-096 Rabo de Peixe', link:'https://www.google.com/maps?q=Associacao+Agricola+de+Sao+Miguel+Rabo+de+Peixe+Campo+de+Santana', reserva:true},
+    {name:'O Galego', food:'Bife Regional — alternativa más auténtica y local a la Associação. Lomo espectacular con patatas fritas caseras.', vibe:'Sitio pequeño, muy frecuentado por gente local, ambiente íntimo y vivo.', addr:'R. de São Gonçalo 1, 9500-112 São Roque, Ponta Delgada', link:'https://www.google.com/maps?q=O+Galego+Sao+Roque+Azores', reserva:true},
+    {name:'Otaka', food:'Alta cocina de fusión japonesa con los pescados más frescos y exóticos del Atlántico azoriano.', vibe:'Único spot de la isla con estética de gran ciudad: minimalista, luces tenues, oscuro, íntimo y sexy.', addr:'R. de São João 41, 9500-106 Ponta Delgada', link:'https://www.google.com/maps?q=Otaka+Rua+de+Sao+Joao+41+9500-106+Ponta+Delgada', reserva:true},
+    {name:"Restaurante Tony's", food:'El famoso Cozido das Furnas: estofado de varias carnes, embutidos y verduras cocido al vapor volcánico.', vibe:'Clásico total de la isla, muy concurrido y tradicional. Ya está en el itinerario del día 3 — reservar con 24–48 h.', addr:'R. de Santana 9, 9675-061 Furnas', link:'https://www.google.com/maps?q=Restaurante+Tonys+Rua+de+Santana+9+9675-061+Furnas', reserva:true},
+    {name:'A Tasca', food:'Petiscos tradicionales elevados — morcela con ananás y atum braseado en costra de sésamo.', vibe:'El lugar con más onda de la capital. Taberna rústica, público joven y cosmopolita, vino fluyendo.', addr:'R. do Aljube 16, 9500-043 Ponta Delgada', link:'https://www.google.com/maps?q=A+Tasca+Rua+do+Aljube+16+9500-043+Ponta+Delgada', reserva:false, strat:'Se llena al extremo y no aceptan reservas — llegar 30 min antes de abrir o anotarse en la lista.'},
+    {name:'Bar Caloura', food:'Lapas grelhadas con mantequilla, ajo y limón, y pescado fresco del día a la brasa.', vibe:'Onda playera y náutica, pegado al mar junto a un pequeño puerto y una piscina natural.', addr:'R. do Porto de Caloura 19, 9560-211 Água de Pau', link:'https://www.google.com/maps?q=Bar+Caloura+Rua+do+Porto+de+Caloura+19+9560-211', reserva:false, strat:'No reserva y se llena por completo — ideal de día o llegando muy temprano a cenar.'},
+    {name:'Taberna Açor', food:'Tablas de quesos locales (busca el de São Jorge), embutidos azorianos y quesos fundidos, con vino de Pico.', vibe:'Local oscuro, rústico, pequeño y con mucho encanto en el centro.', addr:'R. de los Mercadores 41, 9500-092 Ponta Delgada', link:'https://www.google.com/maps?q=Taberna+Acor+Rua+dos+Mercadores+41+9500-092+Ponta+Delgada', reserva:false, strat:'Pocas mesas, se forman esperas afuera — conviene ir temprano en la noche.'},
+    {name:'Mané Cigano', food:'Chicharros fritos (jureles pequeños enteros) con salsa local picante (molho de vilão) y batata dulce.', vibe:'Taberna rústica real donde come la gente trabajadora de la zona, baratísimo, mesas compartidas.', addr:'R. de Santa Luzia 61, 9500-111 Ponta Delgada', link:'https://www.google.com/maps?q=Mane+Cigano+Rua+de+Santa+Luzia+61+9500-111+Ponta+Delgada', reserva:false, strat:'Solo almuerzo, no reserva — llegar antes de las 13:00.'},
+  ],
+  algarve: [
+    {name:'Casa do Prego', food:'Tapas modernas y pregos (bocadillos de carne típicos) reinventados con cortes gourmet.', vibe:'El spot con más ambiente del centro de Lagos. Terraza/azotea concurrida, música alegre y público joven.', addr:'R. de Lançarote de Freitas 18, 8600-605 Lagos', link:'https://www.google.com/maps?q=Casa+do+Prego+Rua+de+Lancarote+de+Freitas+18+Lagos'},
+    {name:"Mar d'Estórias", food:'Cocina tradicional del Algarve — guisos marinos, pescados frescos y pulpo.', vibe:'Espacio cultural moderno con terraza-bar en el techo, vistas a iglesias y tejados históricos. Onda romántica.', addr:'R. Silva Lopes 30, 8600-623 Lagos', link:'https://www.google.com/maps?q=Mar+d+Estorias+Rua+Silva+Lopes+30+Lagos'},
+    {name:'NoSoloÁgua', food:'Cocina mediterránea, sushi y coctelería tropical.', vibe:'Beach Club gigante en Portimão (~25 min de Lagos), piscina al borde del mar, camas balinesas, DJs.', addr:'Marina de Portimão, Bloco 4, Loja 1, 8500-802 Portimão', link:'https://www.google.com/maps?q=NoSoloAgua+Marina+de+Portimao+Bloco+4+8500-802'},
+    {name:'Avenida (Lagos)', food:'Cocina de autor sofisticada frente al puerto deportivo, pescados impecables, chef Roeland Klein.', vibe:'El restaurante fino de Lagos, diseño moderno e iluminado. Ideal para una cena de celebración mirando la marina.', addr:'Av. dos Descobrimentos 43, 8600-645 Lagos', link:'https://www.google.com/maps?q=Avenida+Restaurante+Avenida+dos+Descobrimentos+43+Lagos'},
+    {name:'The Green Room', food:'Comida Tex-Mex de gran nivel, hamburguesas contundentes y margaritas gigantes.', vibe:'Vibra surfera al máximo, música alta, ambiente fiestero, público joven que prende la noche.', addr:'R. António Crisógono dos Santos 47, 8600-678 Lagos', link:'https://www.google.com/maps?q=The+Green+Room+Lagos+Rua+Antonio+Crisogono+dos+Santos+47'},
+    {name:'O Camilo', food:'Pescado fresco a la brasa, almejas al estilo Bulhão Pato y mariscos del día.', vibe:'Arriba del acantilado de la Praia do Camilo, vistas al mar espectaculares. Muy cotizado, ideal atardecer.', addr:'Estrada da Ponta da Piedade, 8600-544 Lagos', link:'https://www.google.com/maps?q=O+Camilo+Estrada+da+Ponta+da+Piedade+8600-544+Lagos'},
+    {name:'Artistas Restaurant', food:'Gastronomía europea y portuguesa refinada en formato menú degustación o carta.', vibe:'Casa histórica con patio interior empedrado, romántico a la luz de las velas. Atmósfera bohemia-chic íntima.', addr:'R. Cândido dos Reis 65, 8600-681 Lagos', link:'https://www.google.com/maps?q=Artistas+Restaurant+Rua+Candido+dos+Reis+65+Lagos'},
+    {name:'Barbosa Bar & Kitchen', food:'Tapas de autor portuguesas con giros internacionales, ideales para compartir con buenos tragos.', vibe:'Acogedor, rústico pero moderno. Mesas al aire libre en el centro histórico, energía jovial y conversada.', addr:'R. António Crisógono dos Santos 32, 8600-678 Lagos', link:'https://www.google.com/maps?q=Barbosa+Bar+Kitchen+Rua+Antonio+Crisogono+dos+Santos+32'},
+  ],
+};
+
+/* ====================== ESTADO ====================== */
+let state = { expenses:[], checks:{}, rate:1050, budgetVar:null, customTodos:[] };
+let gWho = 'mati';
+let curDay = 1;
+let curDayLis = 1;
+let curDayAlg = 1;
+let editId = null;
+
+/* ===== CONFIGURACIÓN SUPABASE — pega aquí tus credenciales ===== */
+const SB_URL = 'https://didrkvtnifrjazgofzxd.supabase.co';
+const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRpZHJrdnRuaWZyamF6Z29menhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODExMjgxMjMsImV4cCI6MjA5NjcwNDEyM30.ZQDqwhEWJVuE4qM13ELpTT7x0pVy9YqQIhRNM1VMIEM';
+/* =============================================================== */
+
+const sb = (path, opt={}) => fetch(`${SB_URL}/rest/v1/${path}`, {
+  method: opt.method || 'GET',
+  headers: Object.assign({apikey:SB_KEY, Authorization:'Bearer '+SB_KEY, 'Content-Type':'application/json'}, opt.headers||{}),
+  body: opt.body
+});
+
+async function loadState(){
+  if(SB_URL.startsWith('PEGA')){ alert('Falta configurar SB_URL y SB_KEY al inicio del <script>.'); renderAll(); return; }
+  try{
+    const [gRes, cRes] = await Promise.all([
+      sb('gastos?select=*&order=fecha.desc'),
+      sb('config?select=*')
+    ]);
+    const g = await gRes.json(); const c = await cRes.json();
+    if(Array.isArray(g)) state.expenses = g.map(r=>({id:+r.id, date:r.fecha, cat:r.categoria, desc:r.descripcion||'', who:r.pagador||'mati', eur:+r.eur, clp:+r.clp}));
+    const s = Array.isArray(c) ? c.find(x=>x.key==='settings') : null;
+    if(s && s.value) Object.assign(state, {
+      checks: s.value.checks||{}, rate: s.value.rate||1050,
+      budgetVar: s.value.budgetVar??null, customTodos: s.value.customTodos||[]
+    });
+  }catch(e){ console.error(e); alert('No pude conectar con Supabase. Revisa SB_URL / SB_KEY y tu internet.'); }
+  renderAll();
+}
+
+let saveT;
+function saveState(){ /* guarda settings: checks, tipo de cambio, meta y recordatorios */
+  clearTimeout(saveT);
+  saveT = setTimeout(async ()=>{
+    try{
+      await sb('config', {method:'POST', headers:{Prefer:'resolution=merge-duplicates'},
+        body: JSON.stringify({key:'settings', value:{checks:state.checks, rate:state.rate, budgetVar:state.budgetVar, customTodos:state.customTodos}})});
+      const h = document.getElementById('saveHint');
+      if(h){ h.textContent = '✓ guardado'; setTimeout(()=>h.textContent='',1500); }
+    }catch(e){ console.error('No se pudo guardar', e); }
+  }, 300);
+}
+
+const sbInsertExpense = e => sb('gastos', {method:'POST', body:JSON.stringify({id:e.id, fecha:e.date, categoria:e.cat, descripcion:e.desc, pagador:e.who, eur:e.eur, clp:e.clp})});
+const sbUpdateExpense = e => sb('gastos?id=eq.'+e.id, {method:'PATCH', body:JSON.stringify({fecha:e.date, categoria:e.cat, descripcion:e.desc, pagador:e.who, eur:e.eur, clp:e.clp})});
+const sbDeleteExpense = id => sb('gastos?id=eq.'+id, {method:'DELETE'});
+
+/* re-sincronizar cuando vuelven a la app (para que Mati y Catita vean lo mismo) */
+document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') loadState(); });
+
+/* ====================== HELPERS ====================== */
+function legOf(dateStr){
+  for(const l of LEGS){ if(dateStr >= l.from && dateStr < l.to) return l; }
+  return dateStr < LEGS[0].from ? LEGS[0] : LEGS[LEGS.length-1];
+}
+const totalSpent = ()=> state.expenses.reduce((s,e)=>s+e.clp,0);
+const todayISO = ()=> new Date().toLocaleDateString('sv-SE'); /* YYYY-MM-DD local */
+const pillMap = {fijo:'<span class="pill ok">fijo</span>', res:'<span class="pill res">📋 reservar</span>', opc:'<span class="pill opt">opcional</span>', warn:'<span class="pill warn">⚠️ verificar</span>'};
+
+function rowsHTML(rows){
+  return rows.map(r=>`<div class="row"><div class="t">${r[0]}</div>
+    <div><div class="act">${r[1]} ${pillMap[r[3]]||''}</div>${r[2]?`<div class="nt">${r[2]}</div>`:''}</div></div>`).join('');
+}
+
+/* ====================== RENDER ====================== */
+function renderAll(){
+  renderHero();
+  renderToday();
+  renderResumen();
+  renderDest();
+  renderExpenses();
+  renderAnalysis();
+}
+
+function nextActivity(t, nowTime){
+  const allITs = [...IT_LISBOA, ...IT_AZORES, ...IT_ALGARVE];
+  const todayDay = allITs.find(d=>d.date===t);
+  if(todayDay){
+    const upcoming = todayDay.rows.find(r=>r[0] > nowTime);
+    if(upcoming) return {row:upcoming, dlabel:todayDay.dlabel, tomorrow:false};
+  }
+  const tom = new Date(t+'T12:00'); tom.setDate(tom.getDate()+1);
+  const tomISO = tom.toLocaleDateString('sv-SE');
+  const tomDay = allITs.find(d=>d.date===tomISO);
+  if(tomDay && tomDay.rows.length) return {row:tomDay.rows[0], dlabel:tomDay.dlabel, tomorrow:true};
+  return null;
+}
+
+function renderHero(){
+  const t = todayISO();
+  const clpTotal = state.expenses.reduce((s,e)=>s+e.clp,0);
+  const daysWith = new Set(state.expenses.map(e=>e.date)).size || 1;
+  const avgClp = daysWith > 1 ? clpTotal/daysWith : 0;
+  let html = '';
+  if(t < '2026-06-19'){
+    const days = Math.ceil((new Date('2026-06-19') - new Date())/86400000);
+    html = `<div class="hstat"><b>${days} días</b><span>para el despegue</span></div>
+      <div class="hstat"><b>${fmtCLP(clpTotal)}</b>gastado en terreno</div>
+      <div class="hstat"><b>${fmtCLP(avgClp)}</b>promedio diario</div>`;
+  } else if(t <= '2026-07-05'){
+    const nowTime = new Date().toTimeString().slice(0,5);
+    const next = nextActivity(t, nowTime);
+    html = `<div class="hstat"><b>${fmtCLP(clpTotal)}</b>gastado</div>
+      <div class="hstat"><b>${fmtCLP(avgClp)}</b>promedio diario</div>`;
+    if(next){
+      const lbl = next.tomorrow ? `mañana ${next.row[0]}` : next.row[0];
+      html += `<div class="hstat" style="flex-basis:100%"><b>⏱ ${lbl} · ${next.row[1]}</b><span>${next.tomorrow ? next.dlabel + ' · mañana' : 'próxima actividad'}</span></div>`;
+    }
+  } else {
+    html = `<div class="hstat"><b>Fin 🛬</b><span>viaje terminado</span></div>
+      <div class="hstat"><b>${fmtCLP(clpTotal)}</b>gastado en total</div>`;
+  }
+  document.getElementById('heroStats').innerHTML = html;
+}
+
+function renderToday(){
+  const t = todayISO();
+  let inner = '';
+  if(t < '2026-06-19'){
+    const pend = TODOS.filter(x=>!state.checks[x.id]).length + (state.customTodos||[]).filter(x=>!state.checks[x.id]).length;
+    inner = `<div class="tag">Cuenta regresiva</div><h3>Faltan ${Math.ceil((new Date('2026-06-19')-new Date())/86400000)} días ✈️</h3>
+      <div style="font-size:14px;opacity:.85">${pend ? pend + ' reserva(s) pendiente(s) en el checklist de abajo.' : 'Checklist completo, solo queda armar la maleta 🧳'}</div>`;
+  } else if(t <= '2026-07-05'){
+    const leg = legOf(t);
+    const spentToday = state.expenses.filter(e=>e.date===t).reduce((s,e)=>s+e.clp,0);
+    const itDay = IT_LISBOA.find(d=>d.date===t) || IT_AZORES.find(d=>d.date===t) || IT_ALGARVE.find(d=>d.date===t);
+    inner = `<div class="tag">Hoy · ${new Date(t+'T12:00').toLocaleDateString('es-CL',{weekday:'long',day:'numeric',month:'long'})}</div>
+      <h3>${leg.name} ${itDay ? '· ' + itDay.title : ''}</h3>
+      <div style="font-size:13px;opacity:.85;margin-bottom:8px">Gastado hoy: <b>${fmtCLP(spentToday)}</b>${itDay && itDay.maps ? ` · <a class="maplink" href="${itDay.maps}" target="_blank" rel="noopener">🗺️ Ruta del día</a>`:''}</div>
+      ${itDay ? `<div>${rowsHTML(itDay.rows)}</div>` : `<div style="font-size:14px;opacity:.85">Día libre según el plan de ${leg.name}. ¡A disfrutar!</div>`}`;
+  } else {
+    inner = `<div class="tag">Post-viaje</div><h3>De vuelta en Chile 🇨🇱</h3>
+      <div style="font-size:14px;opacity:.85">Total gastado en terreno: <b>${fmtCLP(totalSpent())}</b> — revisa el Análisis para el cierre.</div>`;
+  }
+  document.getElementById('todayCard').innerHTML = `<div class="today">${inner}</div>`;
+}
+
+function renderResumen(){
+  const t = todayISO();
+  document.getElementById('legline').innerHTML = LEGS.map(l=>
+    `<div class="leg ${t>=l.from && t<l.to ? 'now':''}"><b><span class="dot" style="background:${l.color}"></span>${l.name}</b><span>${l.dates}</span></div>`).join('');
+
+  const all = TODOS.map(td=>({id:td.id, txt:td.txt, when:td.when, custom:false}))
+    .concat((state.customTodos||[]).map(c=>({id:c.id, txt:c.txt, when:'recordatorio propio', custom:true})));
+  const todoHTML = x => `<label class="todo"><input type="checkbox" data-todo="${x.id}" ${state.checks[x.id]?'checked':''}>
+      <div style="flex:1"><div class="txt">${x.txt}</div><div class="when">${x.when}</div></div>
+      ${x.custom?`<button class="btn ghost" data-deltodo="${x.id}" title="Eliminar recordatorio">✕</button>`:''}</label>`;
+  const act = all.filter(x=>!state.checks[x.id]);
+  const done = all.filter(x=>state.checks[x.id]);
+  document.getElementById('todos').innerHTML =
+    (act.length ? act.map(todoHTML).join('') : '<div class="empty">Nada pendiente por ahora 🎉</div>') +
+    (done.length ? `<details class="donebox"><summary>Completados (${done.length})</summary>${done.map(todoHTML).join('')}</details>` : '');
+  document.querySelectorAll('[data-todo]').forEach(c=>c.addEventListener('change',e=>{
+    state.checks[e.target.dataset.todo] = e.target.checked; saveState(); renderResumen(); renderToday();
+  }));
+  document.querySelectorAll('[data-deltodo]').forEach(b=>b.addEventListener('click',e=>{
+    e.preventDefault();
+    const id = e.target.dataset.deltodo;
+    state.customTodos = state.customTodos.filter(x=>x.id!==id);
+    delete state.checks[id];
+    saveState(); renderResumen();
+  }));
+
+  document.getElementById('tblVuelos').innerHTML = VUELOS.map(v=>
+    `<tr><td>${v[0]}</td><td><b>${v[1]}</b></td><td class="muted">${v[2]}</td><td class="num"><b>${v[3]}</b></td><td class="num"><b>${v[4]}</b></td><td class="muted">${v[5]}</td><td class="num">${fmtCLP(v[6])}</td><td>${v[7]?`<a class="maplink" href="${v[7]}" target="_blank" rel="noopener">📄</a>`:''}</td></tr>`).join('') +
+    `<tr class="totalrow"><td colspan="6">Subtotal pasajes</td><td class="num">${fmtCLP(1755526)}</td><td></td></tr>`;
+}
+
+function restCard(r, idx){
+  return `<div class="restcard">
+    <div class="rtop"><h4>${idx}. ${r.name}</h4>${r.reserva===true?'<span class="pill res">📋 reserva</span>':r.reserva===false?'<span class="pill warn">⏱️ sin reserva</span>':''}</div>
+    <p><b>Comida:</b> ${r.food}</p>
+    <p><b>La onda:</b> ${r.vibe}</p>
+    ${r.strat?`<p><b>Estrategia:</b> ${r.strat}</p>`:''}
+    <a class="maplink" href="${r.link}" target="_blank" rel="noopener">📍 ${r.addr}</a>
+  </div>`;
+}
+function renderRestaurants(key){
+  const list = RESTAURANTS[key];
+  if(!list || !list.length) return '';
+  let html = `<h2>🍽️ Dónde comer en ${DESTINFO[key].name}</h2>`;
+  if(key==='azores'){
+    const conReserva = list.filter(r=>r.reserva===true);
+    const sinReserva = list.filter(r=>r.reserva===false);
+    html += `<p class="restsub">Para tu noche de celebración, mejor asegurar mesa con anticipación. Los demás son imperdibles tradicionales que no reservan — toca llegar temprano.</p>
+      <h3>Con reserva</h3><div class="restgrid">${conReserva.map((r,i)=>restCard(r,i+1)).join('')}</div>
+      <h3 style="margin-top:18px">Sin reserva — llegar temprano</h3><div class="restgrid">${sinReserva.map((r,i)=>restCard(r,i+1)).join('')}</div>`;
+  } else {
+    html += `<div class="restgrid">${list.map((r,i)=>restCard(r,i+1)).join('')}</div>`;
+  }
+  return html;
+}
+
+/* -------- destinos -------- */
+function destHeader(key){
+  const d = DESTINFO[key];
+  return `<h2>${d.emoji} ${d.name} <span class="muted" style="font-family:var(--body);font-size:13px">${d.dates}</span></h2>
+  <div class="card">
+    <div class="row"><div class="t">✈️</div><div><div class="act">Vuelos</div><div class="nt">${d.flights}</div></div></div>
+    <div class="row"><div class="t">🏨</div><div><div class="act">Alojamiento</div><div class="nt">${d.hotel}</div>
+      <div style="margin-top:6px;display:flex;gap:14px;flex-wrap:wrap">
+        <a class="maplink" href="${d.gmaps}" target="_blank" rel="noopener">📍 Cómo llegar al hotel</a>
+        ${d.blink?`<a class="maplink" href="${d.blink}" target="_blank" rel="noopener">📄 ${d.blbl}</a>`:''}
+      </div></div></div>
+    <div class="row"><div class="t">ℹ️</div><div><div class="act">Logística</div><div class="nt">${d.extra}</div></div></div>
+  </div>`;
+}
+function destSpend(key){
+  const tabLegs = LEGS.filter(l=>l.tab===key).map(l=>l.id);
+  const sp = state.expenses.filter(e=>tabLegs.includes(legOf(e.date).id)).reduce((s,e)=>s+e.clp,0);
+  return `<div class="kpi" style="margin-bottom:16px"><div class="lbl">Gastado en este destino</div><div class="val">${fmtCLP(sp)}</div><div class="note">se actualiza con la pestaña Gastos</div></div>`;
+}
+
+function renderDest(){
+  /* Madrid: placeholder */
+  document.getElementById('c-madrid').innerHTML = destHeader('madrid') + destSpend('madrid') +
+    `<div class="empty">Itinerario Madrid por armar 📝</div>`;
+
+  /* Lisboa: itinerario completo + mapa referencial */
+  document.getElementById('c-lisboa').innerHTML = destHeader('lisboa') + destSpend('lisboa') + `
+    <h2>Día a día</h2>
+    <div class="daypick" id="daypick-lis"></div>
+    <div id="dayview-lis"></div>
+    <h2>Lisboa de un vistazo</h2>
+    <div class="legendmap">
+      <span><i class="lc" style="background:#c96a35"></i> Día 1 · Centro Histórico</span>
+      <span><i class="lc" style="background:#3d7a52"></i> Día 2 · Belém</span>
+      <span><i class="lc" style="background:#0c5a6e"></i> Día 3 · Alfama</span>
+      <span><i class="lc" style="background:#5f6fc4"></i> Día 4 · Sintra (excursión)</span>
+    </div>
+    <div class="card" style="padding:10px">
+    <svg viewBox="0 0 860 240" width="100%" role="img" aria-label="Mapa esquemático de Lisboa">
+      <rect width="860" height="240" rx="10" fill="#e4ede8"/>
+      <!-- Tejo river -->
+      <path d="M0,188 C80,184 200,186 350,182 C500,178 660,180 800,185 C830,186 850,188 860,189 L860,240 L0,240 Z" fill="#a8d4de"/>
+      <text x="120" y="220" font-size="12" fill="#4a7a8a" opacity="0.8">Rio Tejo</text>
+      <!-- Sintra excursión (purple day 4) -->
+      <circle cx="68" cy="50" r="9" fill="#5f6fc4" stroke="#fff" stroke-width="2"/>
+      <text x="80" y="38" font-size="12" font-weight="600" fill="#1a262e">Sintra</text>
+      <text x="80" y="50" font-size="9" fill="#5f6fc4" font-weight="600">día 4</text>
+      <line x1="78" y1="59" x2="338" y2="130" stroke="#5f6fc4" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+      <!-- Parque Eduardo VII (day 5) -->
+      <rect x="368" y="62" width="62" height="34" rx="5" fill="#d4e8d0" stroke="#3d7a52" stroke-width="1.5"/>
+      <text x="399" y="77" font-size="10" font-weight="600" fill="#3d7a52" text-anchor="middle">Pq. Eduardo</text>
+      <text x="399" y="90" font-size="10" fill="#3d7a52" text-anchor="middle">VII · día 5</text>
+      <!-- Príncipe Real -->
+      <circle cx="352" cy="120" r="5" fill="#1a262e" stroke="#fff" stroke-width="1.5"/>
+      <text x="362" y="124" font-size="10" fill="#1a262e">Príncipe Real</text>
+      <!-- Belém (green day 2) -->
+      <circle cx="105" cy="168" r="8" fill="#3d7a52" stroke="#fff" stroke-width="2"/>
+      <text x="115" y="163" font-size="11" font-weight="600" fill="#1a262e">Belém</text>
+      <text x="115" y="175" font-size="9" fill="#3d7a52" font-weight="600">día 2</text>
+      <!-- LX Factory (green day 2) -->
+      <circle cx="185" cy="160" r="6" fill="#3d7a52" stroke="#fff" stroke-width="2"/>
+      <text x="195" y="164" font-size="10" fill="#1a262e">LX Factory</text>
+      <!-- Baixa/Chiado (orange day 1) -->
+      <circle cx="385" cy="152" r="8" fill="#c96a35" stroke="#fff" stroke-width="2"/>
+      <text x="395" y="147" font-size="11" font-weight="600" fill="#1a262e">Baixa · Chiado</text>
+      <text x="395" y="158" font-size="9" fill="#c96a35" font-weight="600">día 1</text>
+      <!-- Ribeira / Praça do Comércio (orange day 1) -->
+      <circle cx="358" cy="172" r="6" fill="#c96a35" stroke="#fff" stroke-width="2"/>
+      <text x="368" y="176" font-size="10" fill="#1a262e">Ribeira · Time Out</text>
+      <!-- Pink Street -->
+      <circle cx="374" cy="183" r="5" fill="#c96a35" stroke="#fff" stroke-width="1.5"/>
+      <text x="384" y="187" font-size="10" fill="#1a262e">Pink Street</text>
+      <!-- Alfama / Castelo (blue day 3) -->
+      <circle cx="500" cy="145" r="8" fill="#0c5a6e" stroke="#fff" stroke-width="2"/>
+      <text x="510" y="140" font-size="11" font-weight="600" fill="#1a262e">Alfama</text>
+      <text x="510" y="151" font-size="9" fill="#0c5a6e" font-weight="600">día 3</text>
+      <circle cx="480" cy="125" r="6" fill="#0c5a6e" stroke="#fff" stroke-width="2"/>
+      <text x="490" y="129" font-size="10" fill="#1a262e">Castelo S. Jorge</text>
+      <circle cx="525" cy="162" r="5" fill="#0c5a6e" stroke="#fff" stroke-width="1.5"/>
+      <text x="535" y="166" font-size="10" fill="#1a262e">Graça</text>
+      <!-- Aeropuerto -->
+      <circle cx="710" cy="85" r="6" fill="#46555e" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+      <text x="720" y="80" font-size="10" fill="#46555e">✈ Aeropuerto</text>
+      <!-- N arrow -->
+      <text x="820" y="42" font-size="11" font-weight="700" fill="#46555e" opacity="0.6">N ↑</text>
+    </svg>
+    </div>
+    ${renderRestaurants('lisboa')}`;
+  renderLisboaDay();
+
+  /* Algarve: itinerario completo + mapa de rutas */
+  document.getElementById('c-algarve').innerHTML = destHeader('algarve') + destSpend('algarve') + `
+    <h2>Día a día</h2>
+    <div class="daypick" id="daypick-alg"></div>
+    <div id="dayview-alg"></div>
+    <h2>La costa, por días</h2>
+    <div class="legendmap">
+      <span><i class="lc" style="background:#3d7a52"></i> Día 2 · Calas de Lagos</span>
+      <span><i class="lc" style="background:#c96a35"></i> Día 3 · Benagil & Carvoeiro</span>
+      <span><i class="lc" style="background:#0c5a6e"></i> Día 4 · Albufeira</span>
+    </div>
+    <div class="card" style="padding:10px">
+    <svg viewBox="0 0 860 200" width="100%" role="img" aria-label="Costa del Algarve">
+      <rect width="860" height="200" rx="10" fill="#b3d9e8"/>
+      <text x="430" y="178" font-size="13" fill="#4a7a8a" text-anchor="middle" opacity="0.75">Océano Atlántico</text>
+      <!-- Land -->
+      <path d="M0,0 L860,0 L860,102 C830,106 800,110 765,114 C730,118 695,120 660,118 C625,116 592,111 558,110 C524,109 490,111 456,113 C422,115 388,115 354,112 C320,109 286,104 252,102 C218,100 184,101 154,106 C130,111 95,120 58,126 C36,130 16,132 0,132 Z"
+            fill="#eaf0e2" stroke="#9fb8a8" stroke-width="2"/>
+      <!-- Day 2 route — Lagos calas (green) -->
+      <path d="M152,114 C138,122 120,132 115,136 C120,136 132,128 150,125 C156,123 162,125 162,125 C160,120 155,115 152,114"
+            fill="none" stroke="#3d7a52" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <!-- Day 3 route — Carvoeiro/Benagil (orange) -->
+      <path d="M152,114 C220,110 278,105 342,103 C360,102 382,100 398,100"
+            fill="none" stroke="#c96a35" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <!-- Day 4 route — Albufeira (blue) -->
+      <path d="M152,114 C260,108 380,105 478,104 C520,103 548,103 572,104 C590,105 606,108 648,98"
+            fill="none" stroke="#0c5a6e" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <!-- Points -->
+      <g id="mapPointsAlg" font-size="11" font-weight="600" fill="#1a262e"></g>
+      <!-- N arrow -->
+      <text x="820" y="88" font-size="11" font-weight="700" fill="#46555e" opacity="0.6">N ↑</text>
+    </svg>
+    </div>
+    <div class="grid2" id="routeCardsAlg"></div>
+    ${renderRestaurants('algarve')}`;
+  renderAlgarveDay();
+  document.getElementById('mapPointsAlg').innerHTML = PTS_ALG.map(p=>`
+    <a href="https://www.google.com/maps/search/?api=1&query=${p[4]}" target="_blank" rel="noopener">
+      <circle cx="${p[0]}" cy="${p[1]}" r="6" fill="${p[3]}" stroke="#fff" stroke-width="2"/>
+      <text x="${p[0]+10}" y="${p[1]+4}">${p[2]}</text>
+    </a>`).join('');
+  document.getElementById('routeCardsAlg').innerHTML = IT_ALGARVE.filter(d=>d.maps).map(d=>`
+    <div class="card" style="margin-bottom:0">
+      <b style="font-family:var(--display)">Día ${d.d} · ${d.title}</b>
+      <div class="muted" style="margin:4px 0 10px">${d.dlabel}</div>
+      <a class="maplink" href="${d.maps}" target="_blank" rel="noopener">Abrir ruta completa en Google Maps →</a>
+    </div>`).join('');
+
+  /* Azores: itinerario completo + mapa */
+  const az = document.getElementById('c-azores');
+  az.innerHTML = destHeader('azores') + destSpend('azores') + `
+    <h2>Día a día</h2>
+    <div class="daypick" id="daypick"></div>
+    <div id="dayview"></div>
+
+    <h2>La isla, por días</h2>
+    <div class="legendmap">
+      <span><i class="lc" style="background:#3d7a52"></i> Día 2 · Oeste</span>
+      <span><i class="lc" style="background:#c96a35"></i> Día 3 · Furnas</span>
+      <span><i class="lc" style="background:#0c5a6e"></i> Día 4 · Norte</span>
+      <span><i class="lc" style="background:#5f6fc4"></i> Día 5 · Mar</span>
+    </div>
+    <div class="card" style="padding:10px">
+    <svg viewBox="0 0 860 360" width="100%" role="img" aria-label="Mapa esquemático de São Miguel">
+      <rect x="0" y="0" width="860" height="360" rx="10" fill="#dce9ec"/>
+      <path d="M60,200 C55,170 80,140 115,135 C150,128 185,140 220,138
+               C260,135 295,120 340,118 C390,116 430,130 470,128
+               C520,125 560,110 615,112 C670,114 730,128 775,150
+               C805,165 815,190 800,212 C780,240 730,252 685,255
+               C640,258 600,248 555,252 C510,256 470,268 425,266
+               C380,264 345,250 300,252 C255,254 220,265 175,258
+               C130,251 70,235 60,200 Z"
+            fill="#eaf0e2" stroke="#9fb8a8" stroke-width="2"/>
+      <ellipse cx="135" cy="185" rx="26" ry="18" fill="#a9d2dc" stroke="#7fb3c2"/>
+      <ellipse cx="395" cy="185" rx="16" ry="11" fill="#a9d2dc" stroke="#7fb3c2"/>
+      <ellipse cx="630" cy="200" rx="18" ry="11" fill="#a9d2dc" stroke="#7fb3c2"/>
+      <text x="135" y="218" font-size="10" fill="#46555e" text-anchor="middle">Sete Cidades</text>
+      <text x="395" y="172" font-size="10" fill="#46555e" text-anchor="middle">Lagoa do Fogo</text>
+      <text x="630" y="188" font-size="10" fill="#46555e" text-anchor="middle">Lagoa das Furnas</text>
+      <path d="M330,262 C260,258 190,250 150,225 C120,206 115,195 122,178" fill="none" stroke="#3d7a52" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <path d="M122,178 C110,160 95,160 88,175 M88,175 C80,195 95,215 120,222" fill="none" stroke="#3d7a52" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <path d="M330,262 C400,258 470,250 540,248 C590,246 615,230 632,212" fill="none" stroke="#c96a35" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <path d="M330,262 C345,230 365,205 392,193 C400,170 405,155 420,148 C470,135 540,128 600,130" fill="none" stroke="#0c5a6e" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <path d="M330,262 C390,290 460,295 520,285" fill="none" stroke="#5f6fc4" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+      <g id="mapPoints" font-size="11" font-weight="600" fill="#1a262e"></g>
+    </svg>
+    </div>
+    <div class="grid2" id="routeCards"></div>
+    ${renderRestaurants('azores')}`;
+
+  renderAzoresDay();
+  document.getElementById('mapPoints').innerHTML = PTS.map(p=>`
+    <a href="https://www.google.com/maps/search/?api=1&query=${p[4]}" target="_blank" rel="noopener">
+      <circle cx="${p[0]}" cy="${p[1]}" r="6" fill="${p[3]}" stroke="#fff" stroke-width="2"/>
+      <text x="${p[0]+10}" y="${p[1]+4}">${p[2]}</text>
+    </a>`).join('');
+  document.getElementById('routeCards').innerHTML = IT_AZORES.filter(d=>d.maps).map(d=>`
+    <div class="card" style="margin-bottom:0">
+      <b style="font-family:var(--display)">Día ${d.d} · ${d.title}</b>
+      <div class="muted" style="margin:4px 0 10px">${d.dlabel}</div>
+      <a class="maplink" href="${d.maps}" target="_blank" rel="noopener">Abrir ruta completa en Google Maps →</a>
+    </div>`).join('');
+}
+
+function renderLisboaDay(){
+  document.getElementById('daypick-lis').innerHTML = IT_LISBOA.map(d=>
+    `<button class="daybtn ${d.d===curDayLis?'active':''}" data-day-lis="${d.d}">Día ${d.d}</button>`).join('');
+  document.querySelectorAll('[data-day-lis]').forEach(b=>b.addEventListener('click',e=>{
+    curDayLis = +e.target.dataset.dayLis; renderLisboaDay();
+  }));
+  const d = IT_LISBOA.find(x=>x.d===curDayLis);
+  document.getElementById('dayview-lis').innerHTML = `
+    <div class="card">
+      <div class="ittitle">Día ${d.d} · ${d.title}</div>
+      <div class="muted">${d.dlabel}</div>
+      <div style="margin-top:10px">${rowsHTML(d.rows)}</div>
+    </div>`;
+}
+
+function renderAlgarveDay(){
+  document.getElementById('daypick-alg').innerHTML = IT_ALGARVE.map(d=>
+    `<button class="daybtn ${d.d===curDayAlg?'active':''}" data-day-alg="${d.d}">Día ${d.d}</button>`).join('');
+  document.querySelectorAll('[data-day-alg]').forEach(b=>b.addEventListener('click',e=>{
+    curDayAlg = +e.target.dataset.dayAlg; renderAlgarveDay();
+  }));
+  const d = IT_ALGARVE.find(x=>x.d===curDayAlg);
+  document.getElementById('dayview-alg').innerHTML = `
+    <div class="card">
+      <div class="ittitle">Día ${d.d} · ${d.title}</div>
+      <div class="muted">${d.dlabel}${d.maps?` · <a class="maplink" href="${d.maps}" target="_blank" rel="noopener">🗺️ Ver ruta en Google Maps</a>`:''}</div>
+      <div style="margin-top:10px">${rowsHTML(d.rows)}</div>
+    </div>`;
+}
+
+function renderAzoresDay(){
+  document.getElementById('daypick').innerHTML = IT_AZORES.map(d=>
+    `<button class="daybtn ${d.d===curDay?'active':''}" data-day="${d.d}">Día ${d.d}</button>`).join('');
+  document.querySelectorAll('[data-day]').forEach(b=>b.addEventListener('click',e=>{
+    curDay = +e.target.dataset.day; renderAzoresDay();
+  }));
+  const d = IT_AZORES.find(x=>x.d===curDay);
+  document.getElementById('dayview').innerHTML = `
+    <div class="card">
+      <div class="ittitle">Día ${d.d} · ${d.title}</div>
+      <div class="muted">${d.dlabel}${d.maps?` · <a class="maplink" href="${d.maps}" target="_blank" rel="noopener">🗺️ Ver ruta en Google Maps</a>`:''}</div>
+      <div style="margin-top:10px">${rowsHTML(d.rows)}</div>
+    </div>`;
+}
+
+/* -------- gastos -------- */
+function renderExpenses(){
+  const sel = document.getElementById('gCat');
+  if(!sel.options.length) sel.innerHTML = CATS.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('');
+  const fc = document.getElementById('fCat');
+  if(fc.options.length===1) fc.innerHTML += CATS.map(c=>`<option value="${c[0]}">${c[1]}</option>`).join('');
+  const fd = document.getElementById('fDest');
+  if(fd.options.length===1) fd.innerHTML += LEGS.map(l=>`<option value="${l.id}">${l.name}</option>`).join('');
+  if(!document.getElementById('gFecha').value){
+    const t = todayISO();
+    document.getElementById('gFecha').value = (t>='2026-06-19' && t<='2026-07-05') ? t : '2026-06-19';
+  }
+
+  const spent = totalSpent();
+  const clpMati = state.expenses.filter(e=>e.who==='mati').reduce((s,e)=>s+e.clp,0);
+  const clpCat = state.expenses.filter(e=>e.who==='catita').reduce((s,e)=>s+e.clp,0);
+  document.getElementById('gKpis').innerHTML = `
+    <div class="kpi"><div class="lbl">Total gastado</div><div class="val">${fmtCLP(spent)}</div><div class="note">${state.expenses.length} movimientos</div></div>
+    <div class="kpi"><div class="lbl">Pagó Mati</div><div class="val" style="color:var(--mati)">${fmtCLP(clpMati)}</div><div class="note">${spent?Math.round(clpMati/spent*100):0}% del total</div></div>
+    <div class="kpi"><div class="lbl">Pagó Catita</div><div class="val" style="color:var(--catita)">${fmtCLP(clpCat)}</div><div class="note">${spent?Math.round(clpCat/spent*100):0}% del total</div></div>`;
+
+  const fDest = fd.value, fCatV = fc.value, fWho = document.getElementById('fWho').value;
+  let list = [...state.expenses].sort((a,b)=>b.date.localeCompare(a.date) || b.id-a.id);
+  if(fDest) list = list.filter(e=>legOf(e.date).id===fDest);
+  if(fCatV) list = list.filter(e=>e.cat===fCatV);
+  if(fWho) list = list.filter(e=>e.who===fWho);
+
+  document.getElementById('gList').innerHTML = list.length ? `
+    <div class="card" style="padding:0;overflow-x:auto"><table>
+    <thead><tr><th>Fecha</th><th>Destino</th><th>Categoría</th><th>Descripción</th><th>Pagó</th><th class="num">CLP</th><th></th></tr></thead>
+    <tbody>${list.map(e=>{
+      const c = CATS.find(x=>x[0]===e.cat)||CATS[5]; const l = legOf(e.date);
+      return `<tr><td>${e.date.slice(8)}/${e.date.slice(5,7)}</td><td><span class="muted">${l.name}</span></td>
+      <td><span class="catpill" style="background:${c[2]}1a;color:${c[2]}">${c[1]}</span></td>
+      <td>${e.desc||'—'}</td><td><span class="pill ${e.who}">${e.who==='mati'?'Mati':'Catita'}</span></td>
+      <td class="num"><b>${fmtCLP(e.clp)}</b></td>
+      <td style="white-space:nowrap"><button class="btn ghost" data-edit="${e.id}" title="Editar" style="color:var(--ocean)">✏️</button><button class="btn ghost" data-del="${e.id}" title="Eliminar">✕</button></td></tr>`;}).join('')}
+    </tbody></table></div>`
+    : '<div class="empty">Sin movimientos con estos filtros. El primer pastel de nata cuenta. 🥮</div>';
+  document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',async e=>{
+    if(!confirm('¿Eliminar este gasto?')) return;
+    const id = +e.target.dataset.del;
+    state.expenses = state.expenses.filter(x=>x.id !== id);
+    if(editId === id) cancelEdit();
+    try{ await sbDeleteExpense(id); }catch(err){ alert('No se pudo borrar en Supabase — revisa la conexión.'); }
+    renderAll();
+  }));
+  document.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click',e=>{
+    const ex = state.expenses.find(x=>x.id === +e.target.dataset.edit);
+    if(!ex) return;
+    editId = ex.id;
+    document.getElementById('gFecha').value = ex.date;
+    document.getElementById('gCat').value = ex.cat;
+    document.getElementById('gDesc').value = ex.desc;
+    document.getElementById('gEur').value = ex.clp;
+    gWho = ex.who;
+    document.querySelectorAll('.whobtn').forEach(x=>x.classList.toggle('active', x.dataset.who===gWho));
+    document.getElementById('gAdd').textContent = 'Guardar cambios';
+    document.getElementById('gCancel').style.display = 'block';
+    document.getElementById('gPreview').textContent = `Editando: ${ex.desc||'(sin descripción)'} · ${fmtCLP(ex.clp)}`;
+    document.getElementById('v-gastos').scrollIntoView({behavior:'smooth'});
+  }));
+}
+
+/* -------- análisis -------- */
+function renderAnalysis(){
+  const spent = totalSpent();
+  const t = todayISO();
+  const daysWith = new Set(state.expenses.map(e=>e.date)).size;
+  const tripDay = t < '2026-06-19' ? 0 : Math.min(17, Math.floor((new Date(t)-new Date('2026-06-19'))/86400000)+1);
+  const avg = daysWith ? spent/daysWith : 0;
+  const proj = tripDay>0 && tripDay<17 && avg>0 ? spent + avg*(17-tripDay) : null;
+
+  document.getElementById('aKpis').innerHTML = `
+    <div class="kpi"><div class="lbl">Gastado en terreno</div><div class="val">${fmtCLP(spent)}</div><div class="note">${state.expenses.length} movimientos</div></div>
+    <div class="kpi"><div class="lbl">Promedio diario</div><div class="val">${fmtCLP(avg)}</div><div class="note">${daysWith||0} día(s) con gastos</div></div>
+    <div class="kpi"><div class="lbl">Proyección a 17 días</div><div class="val">${proj?fmtCLP(proj):'—'}</div><div class="note">${proj?'si siguen a este ritmo':'disponible durante el viaje'}</div></div>
+    <div class="kpi"><div class="lbl">Viaje total (fijo + terreno)</div><div class="val">${fmtCLP(TOTAL_FIJO+spent)}</div><div class="note">${fmtCLP((TOTAL_FIJO+spent)/2)} por persona</div></div>`;
+
+  /* balance */
+  const pMati = state.expenses.filter(e=>e.who==='mati').reduce((s,e)=>s+e.clp,0);
+  const pCat = state.expenses.filter(e=>e.who==='catita').reduce((s,e)=>s+e.clp,0);
+  const diff = (pMati - pCat)/2;
+  let bal = '';
+  if(!spent) bal = '<p class="muted">Sin gastos todavía.</p>';
+  else bal = `
+    <div class="side" style="background:var(--ocean-soft)"><span class="muted">Pagó Mati</span><b style="color:var(--mati)">${fmtCLP(pMati)}</b></div>
+    <div style="text-align:center;min-width:170px">
+      <div style="font-size:13px;color:var(--ink-soft)">${Math.abs(diff)<1 ? 'Están a mano 🤝' : (diff>0 ? 'Catita le debe a Mati' : 'Mati le debe a Catita')}</div>
+      <div style="font-family:var(--display);font-size:24px;font-weight:600">${Math.abs(diff)<1?'':fmtCLP(Math.abs(diff))}</div>
+    </div>
+    <div class="side" style="background:#f8e7ef"><span class="muted">Pagó Catita</span><b style="color:var(--catita)">${fmtCLP(pCat)}</b></div>`;
+  document.getElementById('aBalance').innerHTML = bal;
+
+  /* gasto por día */
+  const byDay = {};
+  state.expenses.forEach(e=>byDay[e.date]=(byDay[e.date]||0)+e.clp);
+  const days = Object.keys(byDay).sort();
+  const maxD = Math.max(1,...Object.values(byDay));
+  document.getElementById('aDayChart').innerHTML = days.length ? days.map(d=>{
+    const l = legOf(d);
+    return `<div class="dc" title="${d} · ${fmtCLP(byDay[d])}"><i style="height:${Math.max(4,byDay[d]/maxD*90)}px;background:${l.color}"></i><span>${d.slice(8)}/${d.slice(5,7)}</span></div>`;
+  }).join('') : '<p class="muted">Aparecerá cuando registren gastos.</p>';
+
+  /* por categoría / destino */
+  const byCat = {}; state.expenses.forEach(e=>byCat[e.cat]=(byCat[e.cat]||0)+e.clp);
+  const maxC = Math.max(1,...Object.values(byCat));
+  document.getElementById('aCatBars').innerHTML = state.expenses.length ? CATS.filter(c=>byCat[c[0]]).map(c=>`
+    <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:13px"><span>${c[1]}</span><b>${fmtCLP(byCat[c[0]])} <span class="muted">(${Math.round(byCat[c[0]]/spent*100)}%)</span></b></div>
+    <div class="bar"><i style="width:${byCat[c[0]]/maxC*100}%;background:${c[2]}"></i></div></div>`).join('')
+    : '<p class="muted">Sin gastos todavía.</p>';
+
+  const byLeg = {}; state.expenses.forEach(e=>{const l=legOf(e.date); byLeg[l.id]=(byLeg[l.id]||0)+e.clp;});
+  const maxL = Math.max(1,...Object.values(byLeg));
+  document.getElementById('aLegBars').innerHTML = state.expenses.length ? LEGS.filter(l=>byLeg[l.id]).map(l=>`
+    <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;font-size:13px"><span>${l.name} <span class="muted">(${l.dates})</span></span><b>${fmtCLP(byLeg[l.id])}</b></div>
+    <div class="bar"><i style="width:${byLeg[l.id]/maxL*100}%;background:${l.color}"></i></div></div>`).join('')
+    : '<p class="muted">Sin gastos todavía.</p>';
+
+  /* meta */
+  const ib = document.getElementById('inBudgetVar');
+  if(document.activeElement !== ib) ib.value = state.budgetVar ?? '';
+  const bv = state.budgetVar;
+  let html = '';
+  if(bv){
+    const pct = Math.min(100, spent/bv*100);
+    const col = pct < 70 ? 'var(--leaf)' : pct < 95 ? 'var(--gold)' : 'var(--danger)';
+    html = `<div style="display:flex;justify-content:space-between;font-size:14px"><b>Gastado: ${fmtCLP(spent)}</b><span class="muted">de ${fmtCLP(bv)} (${pct.toFixed(0)}%)</span></div>
+      <div class="bar"><i style="width:${pct}%;background:${col}"></i></div>
+      <p class="muted" style="margin-top:8px">${spent<=bv ? 'Quedan ' + fmtCLP(bv-spent) + '.' : '⚠️ Se pasaron por ' + fmtCLP(spent-bv) + '.'}${proj && bv ? ' Proyección final: ' + fmtCLP(proj) + (proj>bv?' (sobre la meta)':' (dentro de la meta)') : ''}</p>`;
+  } else {
+    html = `<p class="muted">Si quieres, define una meta para comparar contra el gasto real. No es obligatorio — el tracker funciona igual sin ella.</p>`;
+  }
+  document.getElementById('varVsReal').innerHTML = html;
+
+  /* fijos itemizados con subtotal por grupo */
+  let fhtml = '', lastGroup = '', groupSum = 0;
+  const closeGroup = ()=> lastGroup ? `<tr style="background:#f4f6f5"><td colspan="3" style="font-weight:700">Subtotal ${lastGroup}</td><td class="num" style="font-weight:700">${fmtCLP(groupSum)}</td></tr>` : '';
+  FIXED_ITEMS.forEach(it=>{
+    if(it[0] !== lastGroup){ fhtml += closeGroup(); lastGroup = it[0]; groupSum = 0;
+      fhtml += `<tr><td colspan="4" style="font-weight:700;background:var(--ocean-soft)">${it[0]}</td></tr>`; }
+    groupSum += it[3];
+    fhtml += `<tr><td>${it[1]}</td><td>${it[2]}</td><td class="muted">${it[4]} ${it[5]?`· <a class="maplink" href="${it[5]}" target="_blank" rel="noopener">📄 ver</a>`:''}</td><td class="num">${it[3]?fmtCLP(it[3]):'🎁'}</td></tr>`;
+  });
+  fhtml += closeGroup();
+  fhtml += `<tr class="totalrow"><td colspan="3">TOTAL FIJO DEL VIAJE</td><td class="num">${fmtCLP(TOTAL_FIJO)}</td></tr>
+    <tr><td colspan="3" class="muted">Por persona (÷2)</td><td class="num">${fmtCLP(TOTAL_FIJO/2)}</td></tr>`;
+  document.getElementById('tblFixedItems').innerHTML = fhtml;
+}
+
+/* ====================== EVENTOS ====================== */
+document.querySelectorAll('.tab').forEach(tb=>tb.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  tb.classList.add('active');
+  document.getElementById('v-'+tb.dataset.v).classList.add('active');
+  window.scrollTo({top:0});
+}));
+
+document.querySelectorAll('.whobtn').forEach(b=>b.addEventListener('click',()=>{
+  gWho = b.dataset.who;
+  document.querySelectorAll('.whobtn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+}));
+
+document.getElementById('gEur').addEventListener('input',e=>{
+  const v = parseFloat(e.target.value);
+  document.getElementById('gPreview').textContent = v>0 ? `≈ ${fmtCLP(v)}` : '';
+});
+
+function cancelEdit(){
+  editId = null;
+  document.getElementById('gAdd').textContent = 'Agregar';
+  document.getElementById('gCancel').style.display = 'none';
+  document.getElementById('gEur').value=''; document.getElementById('gDesc').value='';
+  document.getElementById('gPreview').textContent='';
+}
+document.getElementById('gCancel').addEventListener('click', cancelEdit);
+
+document.getElementById('gAdd').addEventListener('click',async ()=>{
+  const date = document.getElementById('gFecha').value;
+  const clp = Math.round(parseFloat(document.getElementById('gEur').value));
+  if(!date || !(clp>0)){ alert('Falta la fecha o el monto en CLP.'); return; }
+  const data = {
+    date,
+    cat: document.getElementById('gCat').value,
+    desc: document.getElementById('gDesc').value.trim(),
+    who: gWho,
+    eur: 0, clp
+  };
+  try{
+    if(editId){
+      const ex = state.expenses.find(x=>x.id===editId);
+      if(ex){ Object.assign(ex, data); await sbUpdateExpense(ex); }
+    } else {
+      const nuevo = Object.assign({id: Date.now()}, data);
+      state.expenses.push(nuevo);
+      await sbInsertExpense(nuevo);
+    }
+  }catch(err){ alert('No se pudo guardar en Supabase — revisa la conexión.'); }
+  cancelEdit();
+  renderAll();
+});
+
+['fDest','fCat','fWho'].forEach(id=>document.getElementById(id).addEventListener('change',renderExpenses));
+
+document.getElementById('inBudgetVar').addEventListener('input',e=>{
+  state.budgetVar = parseFloat(e.target.value)||null; saveState(); renderAnalysis();
+});
+
+function addCustomTodo(){
+  const inp = document.getElementById('newTodo');
+  const txt = inp.value.trim();
+  if(!txt) return;
+  state.customTodos.push({id:'c'+Date.now(), txt});
+  inp.value = '';
+  saveState(); renderResumen(); renderToday();
+}
+document.getElementById('addTodo').addEventListener('click', addCustomTodo);
+document.getElementById('newTodo').addEventListener('keydown', e=>{ if(e.key==='Enter') addCustomTodo(); });
+
+loadState();
+</script>
+</body>
+</html>
